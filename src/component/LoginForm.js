@@ -33,8 +33,8 @@ function LoginForm(props) {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Welcome to Tutor Genie!</h1>
-      <p style={{ textAlign: "center" }}>To demo, login as username: user1, password: password1 or SignUp </p>
+      {/* <h1 style={{ textAlign: "center" }}>Heading</h1>
+      <p style={{ textAlign: "center" }}>instructions </p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -65,6 +65,6 @@ function LoginForm(props) {
       </form>
     </div>
   );
-}
+} */}
 
 export default LoginForm

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config({ path: new URL('./.env', import.meta.url).pathname });
 
-const connectionPromise = mongoose.connect("mongodb+srv://momchrysti:mA2mrD-khF%403NLU@cluster0.p1qcsqd.mongodb.net/test", {
+const connectionPromise = mongoose.connect("", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {

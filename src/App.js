@@ -12,20 +12,6 @@ import { Nav } from "./component/Nav.js";
 
 const { generateText, moderateText } = openai;
 
-const user = {
-  id: 1,
-  avatarUrl:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqCxK3T6TdPe_F1YEKaUSSkqVrJFhRtYB-VA&usqp=CAU",
-  avatarAltText: "Genie",
-  style: { width: "40px", height: "40px" },
-  className: "user",
-};
-
-const bot = { id: 0 };
-
-const initialMessages = [
-  { author: bot, timestamp: new Date(), text: "Hello, What's good?" },
-];
 
 const App = () => {
   const [messages, setMessages] = useState(initialMessages);
@@ -42,37 +28,7 @@ const App = () => {
     }
   }, []);
 
-  const addNewMessage = async (event) => {
-    const message = event.message;
-    setMessages([...messages, message, { author: bot, typing: true }]);
-    setIsLoading(true);
-
-    if (message.author === user) {
-      // generate response from OpenAI API
-      const response = await generateText(message.text);
-
-      // add response to messages and remove typing indicator
-      setMessages((messages) => {
-        const updatedMessages = messages.map((m) => {
-          if (m.typing) {
-            return {
-              author: bot,
-              text: response,
-              timestamp: new Date(),
-              typing: false,
-            };
-          }
-          return m;
-        });
-        setIsLoading(false);
-        return updatedMessages;
-      });
-    }
-  };
-
-  const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-  };
+  
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -95,67 +51,70 @@ const App = () => {
   }, []);
   
   return (
-  <div>
-    <Router>
-      {isLoggedIn ? (
-        <>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Chat
-                  user={user}
-                  messages={messages}
-                  onMessageSend={addNewMessage}
-                  width={400}
-                  messageInput={(props) => (
-                    <div style={{ display: "flex" }}>
-                      <input
-                        type="text"
-                        value={props.value}
-                        onChange={props.onChange}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" && !e.shiftKey) {
-                            props.onSend();
-                          }
-                        }}
-                        placeholder="Type your message here..."
-                      />
-                      <button onClick={props.onSend}>
-                        <i className="bi bi-arrow-right"></i>
-                      </button>
-                    </div>
-                  )}
-                />
-              }
-            />
-            <Route path="/logout" element={<LogoutButton handleLogout={handleLogout} />} />
-          </Routes>
-          <LogoutButton isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-        </>
-      ) : (
-        <>
-          {showSignupForm ? (
-            <SignupForm
-              onSignup={handleSignup}
-              onFormLoad={() => setIsFormLoaded(true)}
-            />
-          ) : (
-            <LoginForm
-              onLogin={handleLogin}
-              onSignupClick={() => setShowSignupForm(true)}
-            />
-          )}
-        </>
-      )}
-     
-    </Router>
-    {isLoading && (
-      <div id="typing" className="spinner">
-        🤖.{".".repeat(dots)}
-      </div>
-    )}  <div ref={messagesEndRef} />  
-  </div>
-);
-    }
+    <>
+    <Navbar bg="light" expand="lg">
+    <LinkContainer to="/">
+    <Navbar.Brand>My App</Navbar.Brand>
+    </LinkContainer>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
+    <Nav className="mr-auto">
+    <LinkContainer to="/contact">
+    <Nav.Link>Contact</Nav.Link>
+    </LinkContainer>
+    <LinkContainer to="/home">
+    <Nav.Link>Home</Nav.Link>
+    </LinkContainer>
+    <LinkContainer to="/signup">
+    <Nav.Link>Sign Up</Nav.Link>
+    </LinkContainer>
+    <LinkContainer to="/signin">
+    <Nav.Link>Sign In</Nav.Link>
+    </LinkContainer>
+    <LinkContainer to="/essay-helper">
+    <Nav.Link>Essay Helper</Nav.Link>
+    </LinkContainer>
+    <LinkContainer to="/cover-letter-helper">
+    <Nav.Link>Cover Letter Helper</Nav.Link>
+    </LinkContainer>
+    <LinkContainer to="/topic-outline-generator">
+    <Nav.Link>Topic Outline Generator</Nav.Link>
+    </LinkContainer>
+    </Nav>
+    </Navbar.Collapse>
+    </Navbar>
+    <header>
+    <h1>Welcome to My App</h1>
+    </header>
+    <div className="container-fluid">
+    <div className="row">
+    <div className="col-md-4">
+    <Card>
+    <Card.Body>
+    <Card.Title>Card 1</Card.Title>
+    <Card.Text>Some text for card 1</Card.Text>
+    </Card.Body>
+    </Card>
+    </div>
+    <div className="col-md-4">
+    <Card>
+    <Card.Body>
+    <Card.Title>Card 2</Card.Title>
+    <Card.Text>Some text for card 2</Card.Text>
+    </Card.Body>
+    </Card>
+    </div>
+    <div className="col-md-4">
+    <Card>
+    <Card.Body>
+    <Card.Title>Card 3</Card.Title>
+    <Card.Text>Some text for card 3</Card.Text>
+    </Card.Body>
+    </Card>
+    </div>
+    </div>
+    </div>
+    </>
+    );
+    };
 export default App;
