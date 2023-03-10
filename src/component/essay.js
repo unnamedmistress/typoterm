@@ -1,4 +1,3 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useRef, useEffect } from "react";
 import generateText from "../openai.js";
 const prompt = "Write coverletter ";
