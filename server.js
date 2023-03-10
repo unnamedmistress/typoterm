@@ -10,6 +10,8 @@ import connect from './models/connect.js';
 import path from 'path';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import { authMiddleware } from './src/utils/auth.js';
+
 
 // Set up environment variables and constants
 const __filename = fileURLToPath(import.meta.url);
@@ -19,7 +21,7 @@ dotenv.config({ path: new URL('./.env', import.meta.url).pathname });
 
 // Initialize the express app and middleware
 const app = express();
-
+app.us (authMiddleware)
 app.use(express.json());
 app.use(express.static(__dirname + "/build", { 
   setHeaders: (res, path) => {
@@ -96,6 +98,13 @@ app.post('/api/login', async (req, res) => {
   // create JWT token and send it to the client
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
   res.header('auth-token', token).status(200).json({ message: 'Login successful', token });
+});
+app.get('/api/user', authMiddleware, async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+  res.status(200).json(user);
 });
 
 app.get('/', (req, res) => {

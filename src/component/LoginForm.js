@@ -1,4 +1,4 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import React, { useState } from "react";
 function LoginForm(props) {
   const [username, setUsername] = useState("");
@@ -33,7 +33,7 @@ function LoginForm(props) {
 
   return (
     <div>
-      {/* <h1 style={{ textAlign: "center" }}>Heading</h1>
+      <h1 style={{ textAlign: "center" }}>Heading</h1>
       <p style={{ textAlign: "center" }}>instructions </p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -65,6 +65,6 @@ function LoginForm(props) {
       </form>
     </div>
   );
-} */}
+}
 
 export default LoginForm

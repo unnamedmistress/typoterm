@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
 
 dotenv.config({ path: new URL('./.env', import.meta.url).pathname });
 
@@ -20,11 +18,16 @@ mongoose.set('toJSON', {
   }
 });
 
+const users = [
+  { username: "user6", password: "password1", userResponseEssay: "response1", apiResponse: "api response1", userResponseCover: "response1", apiResponseCover: "api response1", userResponseOutline: "response1", apiResponseOutline: "api response1" },
+  { username: "user5", password: "password2", userResponseEssay: "response2", apiResponse: "api response2", userResponseCover: "response2", apiResponseCover: "api response2", userResponseOutline: "response2", apiResponseOutline: "api response2" },
+  { username: "user6", password: "password3", userResponseEssay: "response3", apiResponse: "api response3", userResponseCover: "response3", apiResponseCover: "api response3", userResponseOutline: "response3", apiResponseOutline: "api response3" }
+];
+
 export default async function connect() {
   await connectionPromise;
   return {
     connection: mongoose.connection,
-    jwt,
-    bcrypt
+    users,
   };
 }
