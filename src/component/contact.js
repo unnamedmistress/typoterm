@@ -1,5 +1,8 @@
 // import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import "./App.css";
+import openai from './openai.js';
 
   return (
 //     <div>

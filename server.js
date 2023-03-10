@@ -7,6 +7,9 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import User from './models/User.js';
 import connect from './models/connect.js';
+import path from 'path';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 // Set up environment variables and constants
 const __filename = fileURLToPath(import.meta.url);
@@ -53,10 +56,14 @@ app.post('/api/signup', async (req, res) => {
       return res.status(400).json({ error: 'Username already exists' });
     }
 
-    // create new user in the database with the password
+    // hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // create new user in the database with the hashed password
     const newUser = new User({
       username,
-      password,
+      password: hashedPassword,
     });
     console.log('New user', newUser);
     await newUser.save();
@@ -80,11 +87,15 @@ app.post('/api/login', async (req, res) => {
     return res.status(401).json({ error: 'Invalid username or password' });
   }
 
-  if (password.trim() !== user.password.trim()) {
+  // compare the hashed password with the given password
+  const validPassword = await bcrypt.compare(password, user.password);
+  if (!validPassword) {
     return res.status(401).json({ error: 'Invalid username or password' });
   }
 
-  res.status(200).json({ message: 'Login successful' });
+  // create JWT token and send it to the client
+  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+  res.header('auth-token', token).status(200).json({ message: 'Login successful', token });
 });
 
 app.get('/', (req, res) => {

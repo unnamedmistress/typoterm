@@ -5,16 +5,26 @@ import { createBrowserHistory } from 'history';
 import LoginForm from './LoginForm.js';
 import How from './How.js';
 import SignupForm from './SignupForm.js';
+import Contact from './contact.js';
+import Essay from './essay.js';
+import Outline from './outline.js';
+import Nav from './Nav.js';
+import UserAccount from './useraccount.js';
 
 const AppRouter = () => {
   const history = createBrowserHistory();
 
   return (
     <BrowserRouter history={history}>
+      <Nav />
       <Routes>
         <Route path="/" element={<LoginForm onSignupClick={() => history.push('/signup')} />} />
         <Route path="/how" element={<How />} />
         <Route path="/signup" element={<SignupForm />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/essay-helper" element={<Essay />} />
+        <Route path="/topic-outline-generator" element={<Outline />} />
+        <Route path="/useraccount" element={<UserAccount />} />
       </Routes>
     </BrowserRouter>
   );

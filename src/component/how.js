@@ -1,5 +1,7 @@
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState, useRef, useEffect } from "react";
+import "./App.css";
+import openai from './openai.js';
 
 const How = () => {
   return (

@@ -1,5 +1,5 @@
+// Import necessary libraries
 import React, { useState, useRef, useEffect } from "react";
-import { Chat } from "@progress/kendo-react-conversational-ui";
 import "./App.css";
 import openai from './openai.js';
 import LoginForm from "./component/LoginForm.js";
@@ -10,17 +10,23 @@ import LogoutButton from "./component/LogoutButton.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Nav } from "./component/Nav.js";
 
+// Destructure the functions from the openai.js file
 const { generateText, moderateText } = openai;
 
+///generateText is the variable that holds the results from the OpenAI API call
 
+// Define the App component
 const App = () => {
-  const [messages, setMessages] = useState(initialMessages);
+  // Define states for text input and loading state
+  const [text, setText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef(null);
+  
+  // Define states for user login and sign-up
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSignupForm, setShowSignupForm] = useState(false);
   const [isFormLoaded, setIsFormLoaded] = useState(false);
 
+  // Check if user is already logged in on component mount
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -28,8 +34,7 @@ const App = () => {
     }
   }, []);
 
-  
-
+  // Functions to handle user login, logout and sign-up
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
@@ -38,11 +43,15 @@ const App = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
   };
+
   const handleSignup = () => {
     setShowSignupForm(true);
   };
+
+  // Define state for the loading dots animation
   const [dots, setDots] = useState(0);
 
+  // Use effect to create and clear interval for loading dots animation
   useEffect(() => {
     const intervalId = setInterval(() => {
       setDots((prevDots) => (prevDots + 1) % 4);
