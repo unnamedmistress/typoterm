@@ -1,11 +1,14 @@
 
-import React, { useState } from "react";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
-import "./App.js";
+import React, { useState, useRef, useEffect } from "react";
+import "./App.css";
+
 import openai from './openai.js';
 import generateText from "../openai.js";
 const prompt = "Write coverletter ";
 const response = generateText;
+
 
 const coverletter = (props) => {
   return (
@@ -39,10 +42,11 @@ const coverletter = (props) => {
         <button type="button" className="btn btn-secondary" onClick={props.onSignupClick}>
           Sign up
         </button>
-      </form> */}
+
+      </form>
     </div>
   );
-}
 
 
-export default coverletter /// this component  
+export default coverLetter;
+
