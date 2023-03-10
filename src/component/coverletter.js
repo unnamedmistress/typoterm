@@ -1,10 +1,6 @@
-
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 import React, { useState, useRef, useEffect } from "react";
-import "./App.css";
-
-import openai from './openai.js';
 import generateText from "../openai.js";
 const prompt = "Write coverletter ";
 const response = generateText;
@@ -14,7 +10,7 @@ const coverletter = (props) => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Heading</h1>
-      {/* <p style={{ textAlign: "center" }}>instructions </p>
+       <p style={{ textAlign: "center" }}>instructions </p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -47,6 +43,6 @@ const coverletter = (props) => {
     </div>
   );
 
+}
 
 export default coverLetter;
-
