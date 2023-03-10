@@ -1,3 +1,4 @@
+
 // import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
@@ -13,6 +14,16 @@ const response = generateText;
     <div>
       <h1 style={{ textAlign: "center" }}>Heading</h1>
       <p style={{ textAlign: "center" }}>instructions </p>
+import React, { useState } from "react";
+
+import openai from '../openai.js';
+
+const essay = (props) => {
+  return (
+    <div>
+      <h1 style={{ textAlign: "center" }}>Heading</h1>
+      {/* <p style={{ textAlign: "center" }}>instructions </p>
+
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -40,9 +51,11 @@ const response = generateText;
         <button type="button" className="btn btn-secondary" onClick={props.onSignupClick}>
           Sign up
         </button>
+
       </form>
     </div>
   );
 
 
 export default essay;
+

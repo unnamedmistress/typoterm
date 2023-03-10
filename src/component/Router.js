@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import LoginForm from './LoginForm.js';
-import How from './How.js';
+import How from './how.js';
 import SignupForm from './SignupForm.js';
 import Contact from './contact.js';
 import Essay from './essay.js';
