@@ -5,8 +5,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import User from './models/User.js';
-import connect from './models/connect.js';
+import User from './src/data/User.js';
+import connect from './src/data/connect.js';
 import path from 'path';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
@@ -109,6 +109,25 @@ app.get('/api/user', authMiddleware, async (req, res) => {
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+
+app.put('/api/user/:id', authMiddleware, async (req, res) => {
+  const { id } = req.params;
+  const { userResponseEssay, apiResponse, userResponseCover, apiResponseCover, userResponseOutline, apiResponseOutline } = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(id, {
+      userResponseEssay,
+      apiResponse,
+      userResponseCover,
+      apiResponseCover,
+      userResponseOutline,
+      apiResponseOutline
+    });
+    res.status(200).json({ success: true, message: 'Responses saved successfully', user });
+  } catch (error) {
+    console.error('Error while saving responses:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 const port = process.env.PORT || 3000;

@@ -8,7 +8,15 @@ import AuthButtons from './component/LogButton.js';
 import LogoutButton from "./component/LogoutButton.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Nav } from "./component/Nav.js";
+import User from "./data/User.js";
+import seedData from './data/seed.js';
 
+
+async function seedDatabase() {
+  await seedData();
+}
+
+seedDatabase();
 // Destructure the functions from the openai.js file
 const { generateText, moderateText } = openai;
 

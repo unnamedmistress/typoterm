@@ -10,6 +10,7 @@ import Essay from './essay.js';
 import Outline from './outline.js';
 import Nav from './Nav.js';
 import UserAccount from './useraccount.js';
+import ResponseForm from './ResponseForm.js';
 
 const AppRouter = () => {
   const history = createBrowserHistory();
@@ -25,6 +26,7 @@ const AppRouter = () => {
         <Route path="/essay-helper" element={<Essay />} />
         <Route path="/topic-outline-generator" element={<Outline />} />
         <Route path="/useraccount" element={<UserAccount />} />
+        <Route path="/response-form" element={<ResponseForm />} />
       </Routes>
     </BrowserRouter>
   );

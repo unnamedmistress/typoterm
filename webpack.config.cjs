@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -27,5 +29,19 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
     port: 3000,
+  },
+  plugins: [
+    new Dotenv(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
+  ],
+  resolve: {
+    fallback: {
+      fs: false,
+      path: require.resolve('path-browserify'),
+    os: false,
+    process: require.resolve('process/browser'),
+    },
   },
 };
