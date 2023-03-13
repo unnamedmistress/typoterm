@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 
 
-const connectionPromise = mongoose.connect("mongodb+srv://momchrysti:mA2mrD-khF%403NLU@cluster0.p1qcsqd.mongodb.net/typodb", {
+const connectionPromise = mongoose.connect(process.env.REACT_APP_MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
-  console.log('Connected to MongoDB' );
+  console.log('Connected to MongoDB' + process.env.REACT_APP_MONGODB_URI);
 }).catch((err) => console.error('Could not connect to MongoDB', err));
 
 mongoose.set('toJSON', {

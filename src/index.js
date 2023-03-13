@@ -4,12 +4,9 @@ import App from './App.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './component/tailwind.css';
 
-
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Nav />
       <Routes>
         <Route path="/" element={<LoginForm onSignupClick={() => history.push('/signup')} />} />
         <Route path="/how" element={<How />} />

@@ -19,7 +19,7 @@ const moderateText = async (text) => {
   if (response.data.rejected) {
     window.alert("The message has been rejected.");
   }
-  console.log('moderation: ' +response.data.results[0].flagged);
+  console.log('moderation: ' + response.data.results[0].flagged);
   return response.data.results[0].flagged;
 };
 const generateText = async (text) => {
