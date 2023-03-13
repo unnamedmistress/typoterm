@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import connect from './connect.js';
+
 
 const userSchema = new mongoose.Schema({
 username: { type: String, required: true, unique: true },

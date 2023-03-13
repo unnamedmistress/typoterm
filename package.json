@@ -1,47 +1,38 @@
 {
-  "name": "chat-web",
+  "name": "typo-terminator",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@progress/kendo-licensing": "^1.3.0",
-    "@progress/kendo-react-conversational-ui": "^5.11.0",
-    "@progress/kendo-theme-default": "^6.1.0",
+    "axios": "^0.23.0",
     "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
+
     "fast-xml-parser": "^4.1.3",
     "helmet": "^6.0.1",
     "heroku": "^8.0.0",
     "history": "^5.3.0",
-    "install": "^0.13.0",
     "JSONStream": "^1.3.5",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.0",
-    "node": "^19.6.1",
-    "node-fetch": "^3.3.0",
-    "npm": "^9.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.15",
+    "node-fetch": "^3.1.0",
     "openai": "^3.2.1",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
-    "react-refresh": "^0.14.0",
-    "react-router-dom": "^6.8.2",
-    "react-scripts": "^5.0.1"
+    "react-router-dom": "^6.1.1",
+    "simple-git": "^3.17.0",
+    "tailwindcss": "^3.2.7"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start && nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "seed": "node --experimental-modules data/seed.mjs",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -54,5 +45,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "path-browserify": "^1.0.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.76.1",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.5.0"
   }
 }
