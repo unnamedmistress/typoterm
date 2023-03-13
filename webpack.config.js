@@ -1,5 +1,8 @@
 const path = require('path');
 
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -24,6 +27,10 @@ module.exports = {
       },
     ],
   },
+  devtool: 'source-map',
+  plugins: [
+    new CleanWebpackPlugin(),
+  ],
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
     port: 3000,

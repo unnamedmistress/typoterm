@@ -11,7 +11,6 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { authMiddleware } from './src/utils/auth.js';
 
-
 // Set up environment variables and constants
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

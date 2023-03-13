@@ -1,28 +1,20 @@
 // Import necessary libraries
-// Import necessary libraries
-import React, { useState, useRef, useEffect } from "react";
-import openai from './openai.js';
+import React, { useState, useEffect } from "react";
+import openai from "./openai.js";
 import LoginForm from "./component/LoginForm.js";
 import SignupForm from "./component/SignupForm.js";
 import { SignupButton } from "./component/SignButton.js";
-import AuthButtons from './component/LogButton.js';
+import AuthButtons from "./component/LogButton.js";
 import LogoutButton from "./component/LogoutButton.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./component/Nav.js";
-import User from "./data/User.js";
-import seedData from './data/seed.js';
-import How from "./component/How.js";
-import Contact from "./component/Contact.js";
-import Essay from "./component/Essay.js";
-import Outline from "./component/Outline.js";
-import UserAccount from "./component/UserAccount.js";
+import How from "./component/how.js";
+import Contact from "./component/contact.js";
+import Essay from "./component/essay.js";
+import Outline from "./component/outline.js";
+import UserAccount from "./component/useraccount.js";
 import ResponseForm from "./component/ResponseForm.js";
 
-async function seedDatabase() {
-  await seedData();
-}
-
-seedDatabase();
 
 // Destructure the functions from the openai.js file
 const { generateText, moderateText } = openai;
@@ -71,23 +63,26 @@ const App = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+
   return (
     <>
-      <Nav
-        isLoggedIn={isLoggedIn}
-        handleLogout={handleLogout}
-        handleLogin={handleLogin}
-      />
-      <header>
-        <h1>Welcome to My App</h1>
+      <Nav />
+      <header className="bg-gray-800 text-white py-4 px-6">
+        <h1 className="text-4xl font-bold">Welcome to My App</h1>
       </header>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-4"></div>
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+          <div className="md:col-span-2 bg-white p-4 rounded-md shadow-md">
+            {/* Your main content here */}
+          </div>
+          <div className="md:col-span-1 bg-white p-4 rounded-md shadow-md">
+            {/* Sidebar or additional content here */}
+          </div>
         </div>
       </div>
     </>
   );
 };
+
 
 export default App;
