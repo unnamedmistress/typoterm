@@ -2,8 +2,7 @@ import express from 'express';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import dotenv from 'dotenv';
+import { dirname } from 'path';;
 import cors from 'cors';
 import User from './src/data/User.js';
 import connect from './src/data/connect.js';
@@ -17,7 +16,6 @@ import { authMiddleware } from './src/utils/auth.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-dotenv.config({ path: new URL('./.env', import.meta.url).pathname });
 
 // Initialize the express app and middleware
 const app = express();

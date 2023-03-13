@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
-import AppRouter from './component/Router.js';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './component/tailwind.css';
+
 
 
 ReactDOM.render(

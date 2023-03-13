@@ -29,7 +29,7 @@ const generateText = async (text) => {
     if (!isFlagged) {
       const completion = await openai.post("/chat/completions", {
         model: "gpt-3.5-turbo-0301",
-        messages: [{ role: "user", content: process.env.REACT_APP_SECRET + text }],
+        messages: [{ role: "user", content: "prompt here" + text }],
         n: 1,
         stop: null,
         max_tokens: 250,
