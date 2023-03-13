@@ -1,17 +1,14 @@
-
-import React, { useState } from "react";
-
-import "./App.js";
-import openai from './openai.js';
+import React, { useState, useRef, useEffect } from "react";
 import generateText from "../openai.js";
 const prompt = "Write coverletter ";
 const response = generateText;
 
-const coverletter = (props) => {
+
+const coverLetter = (props) => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Heading</h1>
-      {/* <p style={{ textAlign: "center" }}>instructions </p>
+       <p style={{ textAlign: "center" }}>instructions </p>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username:</label>
@@ -39,10 +36,11 @@ const coverletter = (props) => {
         <button type="button" className="btn btn-secondary" onClick={props.onSignupClick}>
           Sign up
         </button>
-      </form> */}
+
+      </form>
     </div>
   );
+
 }
 
-
-export default coverletter /// this component  
+export default coverLetter;
