@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+
 import App from './App.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './component/tailwind.css';
@@ -14,7 +15,7 @@ import ResponseForm from "./component/ResponseForm.js";
 import LoginForm from "./component/LoginForm.js";
 import SignupForm from "./component/SignupForm.js";
 
-ReactDOM.render(
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>
       <Nav />
@@ -30,6 +31,5 @@ ReactDOM.render(
       </Routes>
       <App />
     </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );

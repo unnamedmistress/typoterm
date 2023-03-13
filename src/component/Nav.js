@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './LogoutButton.js';
-import LoginButton from './LogButton.js';
+import { LoginButton }from './LogButton.js';
 
 const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
   return (
@@ -16,7 +16,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           <li>
             <NavLink
               className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
-              activeClassName="border-b-2 border-gray-800"
+              activeclassname="border-b-2 border-gray-800"
               to="/how"
             >
               How It Works
@@ -25,7 +25,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           <li>
             <NavLink
               className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
-              activeClassName="border-b-2 border-gray-800"
+              activeclassname="border-b-2 border-gray-800"
               to="/contact"
             >
               Contact Us
@@ -34,7 +34,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           <li>
             <NavLink
               className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
-              activeClassName="border-b-2 border-gray-800"
+              activeclassname="border-b-2 border-gray-800"
               to="/essay-helper"
             >
               Essay Helper
@@ -43,7 +43,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           <li>
             <NavLink
               className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
-              activeClassName="border-b-2 border-gray-800"
+              activeclassname="border-b-2 border-gray-800"
               to="/topic-outline-generator"
             >
               Topic Outline Generator
