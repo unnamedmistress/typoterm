@@ -1,9 +1,8 @@
-const jwt = require('jsonwebtoken');
-
+import jwt from 'jsonwebtoken';
 const secret = 'mysecrettypo';
 const expiration = '2h';
 
-module.exports = {
+export const authMiddleware = {
   authMiddleware: function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;
 
