@@ -1,4 +1,6 @@
 const path = require('path');
+
+
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -32,10 +34,5 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
     port: 3000,
-  },
-  resolve: {
-    fallback: {
-      crypto: false,
-    },
   },
 };

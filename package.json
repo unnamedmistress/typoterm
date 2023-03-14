@@ -61,9 +61,5 @@
     "webpack": "^5.76.1",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.5.0"
-  },
-  
-"browser": {
-  "crypto": false
-}
+  }
 }
