@@ -1,5 +1,4 @@
-import jwt from 'jsonwebtoken';
-
+import jwt_decode from 'jwt-decode';
 const secret = 'mysecrettypo';
 const expiration = '2h';
 
@@ -15,7 +14,8 @@ export default function authMiddleware(req, res, next) {
   }
 
   try {
-    const { data } = jwt.verify(token, secret, { maxAge: expiration });
+    const decodedToken = jwt_decode(token);
+    const { data } = decodedToken;
     req.user = data;
     next();
   } catch (err) {
