@@ -50,12 +50,22 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
             </NavLink>
           </li>
           {isLoggedIn ? (
-            <li>
-              <LogoutButton isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-            </li>
+             <NavLink
+             className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
+             activeclassname="border-b-2 border-gray-800"
+             to="/logout-form"
+           >
+             logout
+           </NavLink>
           ) : (
             <li>
-              <LoginButton handleLogin={handleLogin} />
+            <NavLink
+             className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
+             activeclassname="border-b-2 border-gray-800"
+             to="/login-form"
+           >
+             login
+           </NavLink>
             </li>
           )}
         </ul>
