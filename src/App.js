@@ -63,23 +63,9 @@ const App = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-
   return (
     <>
-      <Nav />
-      <header className="bg-gray-800 text-white py-4 px-6">
-        <h1 className="text-4xl font-bold">Welcome to My App</h1>
-      </header>
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
-          <div className="md:col-span-2 bg-white p-4 rounded-md shadow-md">
-            {/* Your main content here */}
-          </div>
-          <div className="md:col-span-1 bg-white p-4 rounded-md shadow-md">
-            {/* Sidebar or additional content here */}
-          </div>
-        </div>
-      </div>
+     
     </>
   );
 };
