@@ -44,7 +44,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
             <NavLink
               className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
               activeclassname="border-b-2 border-gray-800"
-              to="/topic-outline-generator"
+              to="/outline"
             >
               Topic Outline Generator
             </NavLink>
