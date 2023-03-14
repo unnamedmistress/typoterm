@@ -78,6 +78,31 @@ function LoginForm(props) {
   </div>
 </div>
 
+<div class="bg-black py-12">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-extrabold text-white mb-4">Reviews</h2>
+    <div class="flex flex-wrap -mx-4">
+      <div class="w-full md:w-1/3 px-4 mb-8">
+        <div class="bg-white rounded-lg shadow p-6">
+          <p class="text-lg font-medium mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. "</p>
+          <p class="text-gray-600">- Dario</p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-4 mb-8">
+        <div class="bg-white rounded-lg shadow p-6">
+          <p class="text-lg font-medium mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. "</p>
+          <p class="text-gray-600">- Dario</p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 px-4 mb-8">
+        <div class="bg-white rounded-lg shadow p-6">
+          <p class="text-lg font-medium mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. "</p>
+          <p class="text-gray-600">-Dario</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </>
 
   );

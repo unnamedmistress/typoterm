@@ -1,7 +1,10 @@
 import { Configuration, OpenAIApi } from 'openai';
 import axios from "axios";
+import { signToken } from './utils/auth.js';
 import LoginForm from './component/LoginForm.js';
 const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+
+const user = signToken.username;
 
 
 const openai = axios.create({
@@ -22,14 +25,14 @@ const moderateText = async (text) => {
   console.log('moderation: ' + response.data.results[0].flagged);
   return response.data.results[0].flagged;
 };
-const generateText = async (text) => {
+const generateText = async (text, username) => {
   console.log('generateText:', text);
   try {
     const isFlagged = await moderateText(text);
     if (!isFlagged) {
       const completion = await openai.post("/chat/completions", {
         model: "gpt-3.5-turbo-0301",
-        messages: [{ role: "user", content: "Write Outline" + text }],
+        messages: [{ role: "user", content: "prompt here" + text, user: username }],
         n: 1,
         stop: null,
         max_tokens: 250,
