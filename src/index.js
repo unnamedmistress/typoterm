@@ -25,7 +25,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/essay-helper" element={<Essay />} />
-        <Route path="/topic-outline-generator" element={<Outline />} />
+        <Route path="/outline" element={<Outline />} />
         <Route path="/coverLetter" element={<Cover />} />
         <Route path="/useraccount" element={<UserAccount />} />
         <Route path="/response-form" element={<ResponseForm />} />
