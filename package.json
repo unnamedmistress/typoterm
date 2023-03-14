@@ -10,30 +10,30 @@
     "axios": "^0.23.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
+    "crypto": "npm:crypto-browserify",
+    "crypto-js": "^4.1.1",
     "fast-xml-parser": "^4.1.3",
     "helmet": "^6.0.1",
     "heroku": "^8.0.0",
     "history": "^5.3.0",
     "JSONStream": "^1.3.5",
-    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2",
     "mongoose": "^6.0.15",
     "node-fetch": "^3.1.0",
     "openai": "^3.2.1",
-    "os-browserify": "^0.3.0",
-    "process": "^0.11.10",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.1.1",
     "react-scripts": "5.0.1",
     "simple-git": "^3.17.0",
+    "stream": "npm:stream-browserify",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start && nodemon server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "seed": "node --experimental-modules data/seed.mjs",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start && nodemon server.js",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "browserslist": {
     "production": [
@@ -51,15 +51,28 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "assert": "^2.0.0",
     "babel-loader": "^8.2.3",
+    "buffer": "^6.0.3",
     "clean-webpack-plugin": "^4.0.0",
+    "crypto-browserify": "^3.12.0",
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.2.7",
+    "url": "^0.11.0",
     "webpack": "^5.76.1",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.5.0"
+  },
+  "browser": {
+    "crypto": false
   }
 }
