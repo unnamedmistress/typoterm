@@ -114,8 +114,8 @@ app.post('/api/login', async (req, res) => {
   const payload = { _id: user._id };
   const secret = process.env.JWT_SECRET;
   const expiration = '2h';
-  const token = jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-  res.header('auth-token', token).status(200).json({ message: 'Login successful', token });
+  const tokenToSend = jwt.sign({ data: payload }, secret, { expiresIn: expiration }); // Updated 'token' to 'tokenToSend'
+  res.header('auth-token', tokenToSend).status(200).json({ message: 'Login successful', token: tokenToSend });
 });
 
 // GET /
