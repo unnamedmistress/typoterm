@@ -18,7 +18,7 @@ const __dirname = dirname(__filename);
 
 // Initialize the express app and middleware
 const app = express();
-app.us (authMiddleware)
+app.use(authMiddleware)
 app.use(express.json());
 app.use(express.static(__dirname + "/build", { 
   setHeaders: (res, path) => {
