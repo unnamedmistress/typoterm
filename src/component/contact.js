@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 import openai from '../openai.js';
