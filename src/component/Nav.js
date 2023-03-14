@@ -49,6 +49,15 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
               Topic Outline Generator
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
+              activeclassname="border-b-2 border-gray-800"
+              to="/coverLetter"
+            >
+              CoverLetter Generator
+            </NavLink>
+          </li>
           {isLoggedIn ? (
              <NavLink
              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
