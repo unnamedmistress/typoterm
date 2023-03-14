@@ -1,26 +1,65 @@
 import React, { useState, useRef, useEffect } from "react";
 import generateText from "../openai.js";
 const prompt = "Write coverletter ";
+import { Configuration, OpenAIApi } from "openai";
 const response = generateText;
 
-const Cover = (props) => {
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const openai = new OpenAIApi(configuration);
+
+// API call 
+async function handleSubmit(e) {
+  e.preventDefault();
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt:
+      "Create a coverletter about :",
+    temperature: 0.3,
+    max_tokens: 150,
+    top_p: 1.0,
+    frequency_penalty: 0.0,
+    presence_penalty: 0.0,
+  });
+  setOutputText(response.choices[0].text);
+}
+
+function Cover() {
+  const [inputText, setInputText] = useState("");
+  const [outputText, setOutputText] = useState("");
+
   return (
     <div className="py-10">
-      <h1 className="text-5xl font-bold text-center text-gray-900 mb-8">
-        CoverLetter Generator
-      </h1>
-      <p className="text-lg font-semibold text-center text-gray-700 mb-8">
-        Follow these instructions to create your perfect cover letter.
-      </p>
+      <h1 className="text-5xl font-bold text-center text-gray-900 mb-8">CoverLetter Generator</h1>
+      <p className="text-lg font-semibold text-center text-gray-700 mb-8">Follow these instructions to create your CoverLetter.</p>
       <br></br><br></br>
-     <div className="w-1/2 mx-auto p-4">
-     <input className="w-full h-32 bg-gray-100 border border-gray-400 rounded py-2 px-4" type="text" placeholder="Write your CoverLetter..." />
-     <br></br><br></br>
-     <button className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
-        Submit
-      </button>
-     </div>
-   </div>
+      <form onSubmit={handleSubmit}>
+        <div className="w-1/2 mx-auto p-4">
+          <input
+            type="text"
+            className="w-full h-32 bg-gray-100 border border-gray-400 rounded py-2 px-4"
+            id="inputText"
+            value={inputText}
+            placeholder="Write your Cover here.."
+            onChange={(e) => setInputText(e.target.value)}
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-teal-600 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded"
+        >
+          Submit
+        </button>
+      </form>
+      {outputText && (
+        <div className="mt-5">
+          <h2 className="text-xl font-bold mb-4">Output Text:</h2>
+          <p className="text-lg">{outputText}</p>
+        </div>
+      )}
+    </div>
   );
 }
 
