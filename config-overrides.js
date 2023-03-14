@@ -1,4 +1,4 @@
-import paths from "react-scripts/config/paths";
+
 import webpack from "webpack";
 
 export default async function override(config, env) {
