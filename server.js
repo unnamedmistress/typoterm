@@ -9,7 +9,7 @@ import connect from './data/connect.js';
 import path from 'path';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { authMiddleware } from './src/utils/auth.js';
+import authMiddleware from './src/utils/auth.js';
 
 // Set up environment variables and constants
 const __filename = fileURLToPath(import.meta.url);
@@ -18,7 +18,7 @@ const __dirname = dirname(__filename);
 
 // Initialize the express app and middleware
 const app = express();
-app.use(authMiddleware)
+app.use(authMiddleware);
 app.use(express.json());
 app.use(express.static(__dirname + "/build", { 
   setHeaders: (res, path) => {
