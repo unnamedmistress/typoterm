@@ -105,7 +105,7 @@ function LoginForm(props) {
 </div>
 
 
-<footer className="bg-gray-200 py-8">
+{/* <footer className="bg-gray-200 py-8">
   <div className="container mx-auto flex flex-wrap">
     <div className="w-full lg:w-1/3 px-4">
       <h3 className="font-bold text-gray-900 mb-4">About Us</h3>
@@ -125,7 +125,7 @@ function LoginForm(props) {
       <p className="text-gray-700"><i className="fas fa-envelope fa-lg"></i> info@example.com</p>
     </div>
   </div>
-</footer>
+</footer> */}
 
 </>
 
