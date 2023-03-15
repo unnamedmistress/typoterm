@@ -5,7 +5,7 @@ import { generateText, moderateText } from '../openai.js';
 const Essay = () => {
   const [inputText, setInputText] = useState("");
   const [generatedText, setGeneratedText] = useState("");
-  const promptEssay = "some words";
+  const promptEssay = "Edit, copy write, improve and provide 5 areas for improvement";
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
