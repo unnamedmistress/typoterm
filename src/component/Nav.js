@@ -5,9 +5,10 @@ import { LoginButton } from './LogButton.js';
 
 const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
   return (
-    <ul className="flex justify-between items-center py-4 px-6 bg-white">
+    <div className="bg-gradient-to-r  from-teal-900 to-black">
+    <ul className="flex justify-between items-center py-4 px-6">
       <li>
-        <NavLink className="text-gray-800 hover:text-gray-600 font-bold text-xl uppercase" to="/">
+        <NavLink className="text-white hover:text-teal-400 font-bold text-xl uppercase" to="/">
           Essay App
         </NavLink>
       </li>
@@ -15,7 +16,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
         <ul className="flex justify-between items-center space-x-4">
           <li>
             <NavLink
-              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
+              className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
               to="/how"
             >
               How It Works
@@ -23,7 +24,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           </li>
           <li>
             <NavLink
-              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
+              className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
               to="/contact"
             >
               Contact Us
@@ -31,7 +32,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           </li>
           <li>
             <NavLink
-              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
+              className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
               to="/essay-helper"
             >
               Essay Helper
@@ -39,7 +40,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           </li>
           <li>
             <NavLink
-              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
+              className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
               to="/coverLetter"
             >
               CoverLetter Generator
@@ -47,7 +48,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           </li>
           {isLoggedIn ? (
             <NavLink
-              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
+              className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
               to="/logout-form"
             >
               logout
@@ -55,8 +56,8 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           ) : (
             <li>
               <NavLink
-                className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
-                to="/login-form"
+                className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
+                to="/login"
               >
                 login
               </NavLink>
@@ -65,6 +66,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
         </ul>
       </li>
     </ul>
+    </div>
   );
 };
 

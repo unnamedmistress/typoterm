@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const How = () => {
   return (
-    <div className="container">
+    <div className="bg-gradient-to-r  from-teal-900 to-black">
+    <div className="container h-screen">
       <h1>How to Use Tutor Genie</h1>
       <h2>Frequently Asked Questions</h2>
       <h3>1. How do I start a conversation with Tutor Genie?</h3>
@@ -44,6 +45,7 @@ const How = () => {
          Tutor Genie is not intended to be used as a substitute for studying. It is intended
             to be used as a supplement to studying. You should use it to enhance your learning.
       </p>
+    </div>
     </div>
   );
 };
