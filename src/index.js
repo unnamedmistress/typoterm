@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM, { createRoot } from 'react-dom/client'; // Import ReactDOM and createRoot together
 import App from './App.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './component/tailwind.css';
@@ -7,7 +7,6 @@ import Nav from "./component/Nav.js";
 import How from "./component/how.js";
 import Contact from "./component/contact.js";
 import Essay from "./component/essay.js";
-import Outline from "./component/outline.js";
 import Cover from "./component/coverletter.js"
 import UserAccount from "./component/useraccount.js";
 import ResponseForm from "./component/ResponseForm.js";
@@ -27,7 +26,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/essay-helper" element={<Essay />} />
-        <Route path="/outline" element={<Outline />} />
         <Route path="/coverLetter" element={<Cover />} />
         <Route path="/useraccount" element={<UserAccount />} />
         <Route path="/response-form" element={<ResponseForm />} />

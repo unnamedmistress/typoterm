@@ -10,7 +10,6 @@ import Nav from "./component/Nav.js";
 import How from "./component/how.js";
 import Contact from "./component/contact.js";
 import Essay from "./component/essay.js";
-import Outline from "./component/outline.js";
 import UserAccount from "./component/useraccount.js";
 import ResponseForm from "./component/ResponseForm.js";
 
