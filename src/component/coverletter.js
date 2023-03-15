@@ -86,10 +86,10 @@ const Cover = (props) => {
   };
 
   return (
-    <div className="py-10">
+    <div className="pb-80 pt-24 bg-zinc-900">
       <div className="flex">
-        <div className="w-1/4 bg-gray-100 p-4">
-          <h2 className="text-2xl font-bold mb-4">Saved Links</h2>
+        <div className="w-1/4 bg-zinc-800 p-4">
+          <h2 className="text-2xl text-green-700 hover:text-green-400 font-bold mb-4">Saved Links</h2>
           {renderLinks()}
           <ApiResponseList
             responses={savedCoverLetters}
@@ -98,9 +98,9 @@ const Cover = (props) => {
           />
         </div>
         <div className="w-3/4 p-4">
-          <h2 className="text-2xl font-bold mb-4">Cover Letter Generator</h2>
+          <h2 className="text-2xl text-green-700 hover:text-green-400 font-bold mb-4">Cover Letter Generator</h2>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="resumeText">
+            <label className="block text-green-500 text-sm font-bold mb-2" htmlFor="resumeText">
               Paste your Resume here
             </label>
             <textarea
@@ -112,7 +112,7 @@ const Cover = (props) => {
             ></textarea>
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="jobDescriptionText">
+            <label className="block text-green-500 text-sm font-bold mb-2" htmlFor="jobDescriptionText">
               Paste your Job Description here
             </label>
             <textarea
@@ -125,7 +125,7 @@ const Cover = (props) => {
           </div>
           <div className="mb-4">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4"
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4"
               onClick={handleSubmit}
               disabled={isLoading}
             >
