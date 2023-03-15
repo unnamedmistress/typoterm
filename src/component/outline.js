@@ -1,36 +1,20 @@
+import React, { useState } from "react";
+import { generateText, moderateText } from '../openai.js';
 
-import React, { useState } from "react"; 
-import { Configuration, OpenAIApi } from "openai"; 
-import generateText from "../openai.js"; 
 
-const prompt = "Write Outline"
-const response = generateText;
-
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
-
-// API call 
-async function handleSubmit(e) {
-  e.preventDefault();
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt:
-      "Create an outline for an essay about :",
-    temperature: 0.3,
-    max_tokens: 150,
-    top_p: 1.0,
-    frequency_penalty: 0.0,
-    presence_penalty: 0.0,
-  });
-  setOutputText(response.choices[0].text);
-}
-
-function Outline() {
+const Outline = () => {
   const [inputText, setInputText] = useState("");
-  const [outputText, setOutputText] = useState("");
+  const [generatedText, setGeneratedText] = useState("");
+  const promptOutline = "some words outline";
+
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
+  };
+
+  const handleSubmit = async () => {
+    const response = await generateText(promptEssay, inputText);
+    setGeneratedText(response);
+  };
 
   return (
     <div className="mx-auto max-w-md p-6">

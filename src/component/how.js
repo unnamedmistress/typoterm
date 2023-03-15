@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import openai from '../openai.js';
-
 const How = () => {
   return (
     <div className="container">

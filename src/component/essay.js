@@ -1,10 +1,20 @@
+import React, { useState } from "react";
+import { generateText, moderateText } from '../openai.js';
 
-import React, { useState, useRef, useEffect } from "react";
-import generateText from "../openai.js";
-const prompt = "Write coverletter ";
-const response = generateText;
 
-const Essay = (props) => {
+const Essay = () => {
+  const [inputText, setInputText] = useState("");
+  const [generatedText, setGeneratedText] = useState("");
+  const promptEssay = "some words";
+
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
+  };
+
+  const handleSubmit = async () => {
+    const response = await generateText(promptEssay, inputText);
+    setGeneratedText(response);
+  };
   return (
     <div className="py-10">
       <h1 className="text-5xl font-bold text-center text-gray-900 mb-8">
@@ -14,15 +24,32 @@ const Essay = (props) => {
         Follow these instructions to create your Essay.
       </p>
       <br></br><br></br>
-     <div className="w-1/2 mx-auto p-4">
-     <input className="w-full h-32 bg-gray-100 border border-gray-400 rounded py-2 px-4" type="text" placeholder="Write your Essay here..." />
-     <br></br><br></br>
-     <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-        Submit
-      </button>
-     </div>
-   </div>
+      <div className="w-1/2 mx-auto p-4">
+        <input
+          className="w-full h-32 bg-gray-100 border border-gray-400 rounded py-2 px-4"
+          type="text"
+          placeholder="Write your Essay here..."
+          value={inputText}
+          onChange={handleInputChange}
+        />
+        <br></br><br></br>
+        <button
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+        {generatedText && (
+          <div className="mt-8 bg-gray-100 border border-gray-400 rounded py-4 px-6">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Generated Text:
+            </h3>
+            <p className="text-lg text-gray-700">{generatedText}</p>
+          </div>
+        )}
+      </div>
+    </div>
   );
-}
+};
 
-export default Essay; 
+export default Essay;
