@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import generateText from "../openai.js";
+import { generateText } from "../openai.js";
 const prompt = "Write coverletter ";
 import { Configuration, OpenAIApi } from "openai";
 const response = generateText;

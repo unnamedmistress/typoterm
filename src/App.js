@@ -1,6 +1,5 @@
 // Import necessary libraries
 import React, { useState, useEffect } from "react";
-import openai from "./openai.js";
 import LoginForm from "./component/LoginForm.js";
 import SignupForm from "./component/SignupForm.js";
 import { SignupButton } from "./component/SignButton.js";
@@ -15,9 +14,6 @@ import Outline from "./component/outline.js";
 import UserAccount from "./component/useraccount.js";
 import ResponseForm from "./component/ResponseForm.js";
 
-
-// Destructure the functions from the openai.js file
-const { generateText, moderateText } = openai;
 
 // Define the App component
 const App = () => {
