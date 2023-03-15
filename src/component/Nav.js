@@ -46,7 +46,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
               activeclassname="border-b-2 border-gray-800"
               to="/outline"
             >
-              Topic Outline Generator
+              Topic Generator
             </NavLink>
           </li>
           <li>
