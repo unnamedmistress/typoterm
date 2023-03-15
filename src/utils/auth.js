@@ -29,3 +29,4 @@ export function signToken({ email, username, _id }) {
   const payload = { email, username, _id, exp: Math.floor(Date.now() / 1000) + expiration };
   return sign(payload, secret);
 }
+
