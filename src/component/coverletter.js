@@ -1,66 +1,145 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { generateText } from "../openai.js";
-const prompt = "Write coverletter ";
-import { Configuration, OpenAIApi } from "openai";
-const response = generateText;
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import CoverLetterView from './CoverLetterView.js';
+import ApiResponseList from "./ApiResponseList.js"; // Import the ApiResponseList component
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const prompt = "Write a cover letter ";
+const Cover = (props) => {
+  const [resumeText, setResumeText] = useState("");
+  const [jobDescriptionText, setJobDescriptionText] = useState("");
+  const [generatedText, setGeneratedText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [savedCoverLetters, setSavedCoverLetters] = useState([]); // Add state for saved cover letters
+  const { userId } = props;
+  const navigate = useNavigate();
 
-const openai = new OpenAIApi(configuration);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/user/${userId}`);
+        setUserData(response.data);
+        setSavedCoverLetters(response.data.userResponses || []); // Set saved cover letters
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+    fetchData();
+  }, [userId]);
 
-// API call 
-async function handleSubmit(e) {
-  e.preventDefault();
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt:
-      "Create a coverletter about :",
-    temperature: 0.3,
-    max_tokens: 150,
-    top_p: 1.0,
-    frequency_penalty: 0.0,
-    presence_penalty: 0.0,
-  });
-  setOutputText(response.choices[0].text);
-}
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    const combinedText = `Resume: ${resumeText}\n\nJob Description: ${jobDescriptionText}`;
+    const response = await generateText(prompt, combinedText);
+    setGeneratedText(response);
+    setIsLoading(false);
+  };
 
-function Cover() {
-  const [inputText, setInputText] = useState("");
-  const [outputText, setOutputText] = useState("");
+  const handleSaveResponse = async () => {
+    // Save the generated cover letter using an API call
+    try {
+      const createdAt = new Date(); // Add the current date and time
+      await axios.post(`/api/user/${userId}/responses`, {
+        cover: generatedText,
+        createdAt: createdAt.toISOString(), // Save the date as an ISO string
+      });
+      console.log('Cover letter saved successfully');
+      setSavedCoverLetters([...savedCoverLetters, { cover: generatedText, createdAt }]);
+    } catch (error) {
+      console.error('Error saving cover letter:', error);
+    }
+  };
+
+  const handleDeleteResponse = (index) => {
+    const newSavedCoverLetters = savedCoverLetters.filter((_, i) => i !== index);
+    setSavedCoverLetters(newSavedCoverLetters);
+  };
+  const handleViewResponse = (index) => {
+    const coverLetter = savedCoverLetters[index];
+    navigate(`/cover-letter/${index}`, { state: { coverLetter } });
+  };
+
+  const renderLinks = () => {
+    if (!userData || !userData.savedLinks) {
+      return null;
+    }
+    return userData.savedLinks.map((item, index) => (
+      <div key={index} className="mb-2">
+        <a href={item.link} className="text-blue-600 hover:text-blue-800">
+          {item.title}
+        </a>
+      </div>
+    ));
+  };
 
   return (
     <div className="py-10">
-      <h1 className="text-5xl font-bold text-center text-gray-900 mb-8">CoverLetter Generator</h1>
-      <p className="text-lg font-semibold text-center text-gray-700 mb-8">Follow these instructions to create your CoverLetter.</p>
-      <br></br><br></br>
-      <form onSubmit={handleSubmit}>
-        <div className="w-1/2 mx-auto p-4">
-          <input
-            type="text"
-            className="w-full h-32 bg-gray-100 border border-gray-400 rounded py-2 px-4"
-            id="inputText"
-            value={inputText}
-            placeholder="Write your Cover here.."
-            onChange={(e) => setInputText(e.target.value)}
+      <div className="flex">
+        <div className="w-1/4 bg-gray-100 p-4">
+          <h2 className="text-2xl font-bold mb-4">Saved Links</h2>
+          {renderLinks()}
+          <ApiResponseList
+              responses={savedCoverLetters}
+              onViewResponse={handleViewResponse} // Add this prop
+              onDeleteResponse={handleDeleteResponse}
           />
         </div>
-        <button
-          type="submit"
-          className="bg-teal-600 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded"
-        >
-          Submit
-        </button>
-      </form>
-      {outputText && (
-        <div className="mt-5">
-          <h2 className="text-xl font-bold mb-4">Output Text:</h2>
-          <p className="text-lg">{outputText}</p>
+        <div className="w-3/4 p-4">
+          <h2 className="text-2xl font-bold mb-4">Cover Letter Generator</h2>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="resumeText">
+              Paste your Resume here
+            </label>
+            <textarea
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="resumeText"
+              rows="5"
+              value={resumeText}
+              onChange={(e) => setResumeText(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="jobDescriptionText">
+              Paste your Job Description here
+            </label>
+            <textarea
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="jobDescriptionText"
+              rows="5"
+              value={jobDescriptionText}
+              onChange={(e) => setJobDescriptionText(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="mb-4">
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4"
+              onClick={handleSubmit}
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "Generate Cover Letter"}
+            </button>
+            {generatedText && (
+              <button
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onClick={handleSaveResponse}
+              >
+                Save Response
+              </button>
+            )}
+          </div>
+          {generatedText && (
+            <div>
+              <h3 className="text-xl font-bold mb-2">Generated Cover Letter</h3>
+              <p className="text-gray-700 whitespace-pre-wrap">{generatedText}</p>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
-}
+  
+};
 
-export default Cover; 
+export default Cover;
