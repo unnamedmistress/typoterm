@@ -37,7 +37,7 @@ const generateText = async (promptEssay, text) => {
         messages: [{ role: "user", content: promptEssay || promptOutline + " " + text }],
         n: 1,
         stop: null,
-        max_tokens: 250,
+        max_tokens: 1000,
         temperature: 0.5,
       });
       console.log(completion.data);
