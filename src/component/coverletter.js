@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { generateText } from "../openai.js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const Cover = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState(null);
   const [savedCoverLetters, setSavedCoverLetters] = useState([]); // Add state for saved cover letters
-  const { userId } = props;
+  const { isLoggedIn, userId } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,8 +26,10 @@ const Cover = (props) => {
         console.error("Error fetching user data:", error);
       }
     };
-    fetchData();
-  }, [userId]);
+    if (isLoggedIn && userId) {
+      fetchData();
+    }
+  }, [isLoggedIn, userId]);
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -38,6 +40,15 @@ const Cover = (props) => {
   };
 
   const handleSaveResponse = async () => {
+    // Check if the user is logged in
+    if (!isLoggedIn || !userId) {
+      window.alert('Please log in to save your response.'); // Display an alert message
+      navigate('/login'); // Direct the user to the login page
+      return;
+    } else if (!generatedText) {
+      window.alert('Please generate a cover letter first.'); // Display an alert message
+      return;
+    }
     // Save the generated cover letter using an API call
     try {
       const createdAt = new Date(); // Add the current date and time
@@ -81,9 +92,9 @@ const Cover = (props) => {
           <h2 className="text-2xl font-bold mb-4">Saved Links</h2>
           {renderLinks()}
           <ApiResponseList
-              responses={savedCoverLetters}
-              onViewResponse={handleViewResponse} // Add this prop
-              onDeleteResponse={handleDeleteResponse}
+            responses={savedCoverLetters}
+            onViewResponse={handleViewResponse}
+            onDeleteResponse={handleDeleteResponse}
           />
         </div>
         <div className="w-3/4 p-4">
@@ -120,12 +131,21 @@ const Cover = (props) => {
             >
               {isLoading ? "Loading..." : "Generate Cover Letter"}
             </button>
-            {generatedText && (
+            {generatedText && isLoggedIn && (
               <button
                 className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={handleSaveResponse}
               >
                 Save Response
+              </button>
+            )}
+            {generatedText && !isLoggedIn && (
+              <button
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onClick={handleSaveResponse}
+                disabled={true}
+              >
+                Log in to Save Response
               </button>
             )}
           </div>
@@ -140,6 +160,7 @@ const Cover = (props) => {
     </div>
   );
   
-};
+          }
+        
 
 export default Cover;

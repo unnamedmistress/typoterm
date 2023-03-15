@@ -7,7 +7,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
   return (
     <ul className="flex justify-between items-center py-4 px-6 bg-white">
       <li>
-        <NavLink className="text-gray-800 hover:text-gray-600 font-bold text-xl uppercase" to="/">
+        <NavLink exact className="text-gray-800 hover:text-gray-600 font-bold text-xl uppercase" to="/">
           Essay App
         </NavLink>
       </li>
@@ -15,6 +15,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
         <ul className="flex justify-between items-center space-x-4">
           <li>
             <NavLink
+              exact
               className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
               activeclassname="border-b-2 border-gray-800"
               to="/how"
@@ -24,6 +25,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           </li>
           <li>
             <NavLink
+              exact
               className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
               activeclassname="border-b-2 border-gray-800"
               to="/contact"
@@ -33,6 +35,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           </li>
           <li>
             <NavLink
+              exact
               className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
               activeclassname="border-b-2 border-gray-800"
               to="/essay-helper"
@@ -42,15 +45,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           </li>
           <li>
             <NavLink
-              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
-              activeclassname="border-b-2 border-gray-800"
-              to="/outline"
-            >
-              Topic Generator
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
+              exact
               className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
               activeclassname="border-b-2 border-gray-800"
               to="/coverLetter"
@@ -60,6 +55,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           </li>
           {isLoggedIn ? (
              <NavLink
+             exact
              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
              activeclassname="border-b-2 border-gray-800"
              to="/logout-form"
@@ -69,6 +65,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
           ) : (
             <li>
             <NavLink
+             exact
              className="text-gray-800 hover:text-gray-600 font-semibold text-sm uppercase"
              activeclassname="border-b-2 border-gray-800"
              to="/login-form"

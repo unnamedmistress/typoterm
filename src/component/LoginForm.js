@@ -1,5 +1,5 @@
-
 import React, { useState } from "react";
+
 function LoginForm(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,122 +13,106 @@ function LoginForm(props) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
-     console.log(response);
-      console.log("response.ok : " + response.ok)
+      console.log(response);
+      console.log("response.ok : " + response.ok);
       if (response.ok) {
         props.onLogin();
       } else {
-        console.log( username + " : " + password)
+        console.log(username + " : " + password);
         throw new Error("HTTP error " + response.status);
       }
     } catch (error) {
       console.error("client side: " + error + " " + error.message);
-      alert("Error logging in " + error );
+      alert("Error logging in: " + error.message);
     }
   };
 
   return (
-    // <div>
-    //   <h1 style={{ textAlign: "center" }}>Heading</h1>
-    //   <p style={{ textAlign: "center" }}>instructions </p>
-    //   <form onSubmit={handleSubmit}>
-    //     <div classNameName="form-group">
-    //       <label htmlFor="username">Username:</label>
-    //       <input
-    //         type="text"
-    //         classNameName="form-control"
-    //         id="username"
-    //         value={username}
-    //         placeholder="user1"
-    //         onChange={(e) => setUsername(e.target.value)}
-    //       />
-    //     </div>
-    //     <div classNameName="form-group">
-    //       <label htmlFor="password">Password:</label>
-    //       <input
-    //         type="password"
-    //         classNameName="form-control"
-    //         id="password"
-    //         value={password}
-    //         placeholder="password1"
-    //         onChange={(e) => setPassword(e.target.value)}
-    //       />
-    //     </div>
-    //     <button type="submit" classNameName="btn btn-primary mr-2">Log in</button>
-    //     <button type="button" classNameName="btn btn-secondary" onClick={props.onSignupClick}>
-    //       Sign up
-    //     </button>
-    //   </form>
-    // </div>
-
-<>
-  <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between bg-black py-12 px-4 h-screen">
-  <div className="lg:w-1/2 text-white mx-auto">
-    <h1 className="text-4xl font-bold mb-4">Typo Terminator</h1>
-    <p className="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum euismod mauris vel tellus aliquam, id pharetra enim lobortis.</p>
-    <a href="#" className="bg-white text-blue-500 py-2 px-4 rounded-full font-bold uppercase tracking-wide hover:bg-blue-600 hover:text-white transition duration-200 ease-in-out">Learn More</a>
-  </div>
-  <div className="lg:w-1/2 mt-8 lg:mt-0 flex justify-end">
-    <a href="#" className="text-white font-bold py-2 px-4 mr-4 rounded-full bg-blue-700 hover:bg-blue-600 transition duration-200 ease-in-out">Log In</a>
-    <a href="#" className="text-white font-bold py-2 px-4 rounded-full bg-gray-700 hover:bg-gray-600 transition duration-200 ease-in-out">Sign Up</a>
-  </div>
-</div>
-
-<div className="bg-black py-12">
-  <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 className="text-3xl font-extrabold text-white mb-4">Reviews</h2>
-    <div className="flex flex-wrap -mx-4">
-      <div className="w-full md:w-1/3 px-4 mb-8">
-        <div className="bg-white rounded-lg shadow p-6">
-          <p className="text-lg font-medium mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. "</p>
-          <p className="text-gray-600">- Dario</p>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <div className="max-w-md w-full">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-gray-900">Login</h1>
+          <p className="mt-2 text-sm text-gray-600">
+            Enter your username and password
+          </p>
         </div>
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <input type="hidden" name="remember" value="true" />
+          <div className="rounded-md shadow-sm -space-y-px">
+            <div>
+              <label htmlFor="username" className="sr-only">
+                Username
+              </label>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                autoComplete="username"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
+  
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <input
+                id="remember_me"
+                name="remember_me"
+                type="checkbox"
+                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              />
+              <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
+                Remember me
+              </label>
+            </div>
+  
+            <div className="text-sm">
+              <button
+                type="submit"
+                className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+              >
+                Log in
+              </button>
+            </div>
+          </div>
+  
+          <div className="text-sm mt-4 text-center">
+            <span className="text-gray-600">Don't have an account yet? </span>
+            <button
+              type="button"
+              className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+              onClick={props.onSignupClick}
+            >
+              Sign up
+            </button>
+          </div>
+        </form>
       </div>
-      <div className="w-full md:w-1/3 px-4 mb-8">
-        <div className="bg-white rounded-lg shadow p-6">
-          <p className="text-lg font-medium mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. "</p>
-          <p className="text-gray-600">- Dario</p>
-        </div>
-      </div>
-      <div className="w-full md:w-1/3 px-4 mb-8">
-        <div className="bg-white rounded-lg shadow p-6">
-          <p className="text-lg font-medium mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. "</p>
-          <p className="text-gray-600">-Dario</p>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-
-
-<footer className="bg-gray-200 py-8">
-  <div className="container mx-auto flex flex-wrap">
-    <div className="w-full lg:w-1/3 px-4">
-      <h3 className="font-bold text-gray-900 mb-4">About Us</h3>
-      <p className="text-gray-700">Small paragraph.</p>
-    </div>
-    <div className="w-full lg:w-1/3 px-4">
-      <h3 className="font-bold text-gray-900 mb-4">Social Media</h3>
-      <ul className="list-reset">
-        <li className="mb-2">
-          <a href="#" className="text-gray-700 hover:text-blue-500"><i className=""></i> github</a>
-        </li>
-      </ul>
-    </div>
-    <div className="w-full lg:w-1/3 px-4">
-      <h3 className="font-bold text-gray-900 mb-4">Contact Us</h3>
-      <p className="text-gray-700"><i className="fas fa-phone-square fa-lg"></i> 1-800-123-4567</p>
-      <p className="text-gray-700"><i className="fas fa-envelope fa-lg"></i> info@example.com</p>
-    </div>
-  </div>
-</footer>
-
-</>
-
   );
 }
 
