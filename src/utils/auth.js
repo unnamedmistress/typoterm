@@ -1,6 +1,8 @@
 import jwt_decode from 'jwt-decode';
+import { sign, verify } from 'jwt-lite';
+
 const secret = 'mysecrettypo';
-const expiration = '2h';
+const expiration = 7200; // 2 hours in seconds
 
 export default function authMiddleware(req, res, next) {
   let token = req.body.token || req.query.token || req.headers.authorization;
@@ -14,9 +16,8 @@ export default function authMiddleware(req, res, next) {
   }
 
   try {
-    const decodedToken = jwt_decode(token);
-    const { data } = decodedToken;
-    req.user = data;
+    const decodedToken = verify(token, secret);
+    req.user = decodedToken;
     next();
   } catch (err) {
     console.log('Invalid token');
@@ -25,6 +26,6 @@ export default function authMiddleware(req, res, next) {
 }
 
 export function signToken({ email, username, _id }) {
-  const payload = { email, username, _id };
-  return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+  const payload = { email, username, _id, exp: Math.floor(Date.now() / 1000) + expiration };
+  return sign(payload, secret);
 }

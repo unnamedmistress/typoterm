@@ -7,9 +7,9 @@ import cors from 'cors';
 import User from './data/User.js';
 import connect from './data/connect.js';
 import path from 'path';
-import jwt_decode from 'jwt-decode';
 import bcrypt from 'bcrypt';
-import authMiddleware from './src/utils/auth.js';
+import authMiddleware, { signToken } from './src/utils/auth.js';
+
 
 // Set up environment variables and constants
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +17,7 @@ const __dirname = dirname(__filename);
 
 // Initialize the express app and middleware
 const app = express();
-app.use(authMiddleware);
+
 app.use(express.json());
 app.use(express.static(__dirname + "/build", { 
   setHeaders: (res, path) => {
@@ -93,28 +93,12 @@ app.post('/api/login', async (req, res) => {
   // create JWT token and send it to the client
   let token = req.body.token || req.query.token || req.headers.authorization;
 
-  if (req.headers.authorization) {
-    token = token.split(' ').pop().trim();
-  }
-
-  if (!token) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
-
-  try {
-    const decodedToken = jwt_decode(token);
-    const { data } = decodedToken;
-    req.user = data;
-    next();
-  } catch (err) {
-    console.log('Invalid token');
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
 
   const payload = { _id: user._id };
   const secret = process.env.JWT_SECRET;
   const expiration = '2h';
-  const tokenToSend = jwt.sign({ data: payload }, secret, { expiresIn: expiration }); // Updated 'token' to 'tokenToSend'
+  const tokenToSend = signToken({ email: user.email, username: user.username, _id: user._id });
+
   res.header('auth-token', tokenToSend).status(200).json({ message: 'Login successful', token: tokenToSend });
 });
 
