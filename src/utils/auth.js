@@ -1,30 +1,32 @@
-// import jwt_decode from 'jwt-decode';
-// const secret = 'mysecrettypo';
-// const expiration = '2h';
+import jwt_decode from 'jwt-decode';
+import { sign, verify } from 'jwt-lite';
 
-// export default function authMiddleware(req, res, next) {
-//   let token = req.body.token || req.query.token || req.headers.authorization;
+const secret = 'mysecrettypo';
+const expiration = 7200; // 2 hours in seconds
 
-//   if (req.headers.authorization) {
-//     token = token.split(' ').pop().trim();
-//   }
+export default function authMiddleware(req, res, next) {
+  let token = req.body.token || req.query.token || req.headers.authorization;
 
-//   if (!token) {
-//     return res.status(401).json({ error: 'Unauthorized' });
-//   }
+  if (req.headers.authorization) {
+    token = token.split(' ').pop().trim();
+  }
 
-//   try {
-//     const decodedToken = jwt_decode(token);
-//     const { data } = decodedToken;
-//     req.user = data;
-//     next();
-//   } catch (err) {
-//     console.log('Invalid token');
-//     return res.status(401).json({ error: 'Unauthorized' });
-//   }
-// }
+  if (!token) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
 
-// export function signToken({ email, username, _id }) {
-//   const payload = { email, username, _id };
-//   return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-// }
+  try {
+    const decodedToken = verify(token, secret);
+    req.user = decodedToken;
+    next();
+  } catch (err) {
+    console.log('Invalid token');
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+}
+
+export function signToken({ email, username, _id }) {
+  const payload = { email, username, _id, exp: Math.floor(Date.now() / 1000) + expiration };
+  return sign(payload, secret);
+}
+
