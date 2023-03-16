@@ -4,7 +4,7 @@ const Contact = (props) => {
   return (
     <>
       <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24 text-white"> 
-      <img src="/assets/IMG_2662.PNG" alt="logo" className="mx-auto" height="250px" style={{ maxWidth: "100%", maxHeight: "250px", objectFit: "contain" }} />
+      <img src="https://github.com/unnamedmistress/typoterm/blob/main/public/assets/IMG_2662.PNG?raw=true" alt="logo" className="mx-auto" height="250px" style={{ maxWidth: "100%", maxHeight: "250px", objectFit: "contain" }} />
         <h1 style={{ textAlign: "center" }}>Contact</h1>
         <h3 style={{ textAlign: "center" }}>Email:momchrystick@gmail.com </h3>
        

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import backgroundImage from "../assets/IMG_2662.PNG";
 
 const image = `url:"https://github.com/unnamedmistress/typoterm/blob/main/public/assets/IMG_2662.PNG?raw=true`
 

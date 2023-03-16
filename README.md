@@ -9,6 +9,7 @@ ChatGPT is the model used: gpt-turbo-301 but the next model is super fast and is
 DOUBLE LAYER OF PROTECTION for child users. User enter text is sent though a moderation engine to check for any sexual, violent or other inappropriate text. Only if it passes that check will it get a response from the AI. A second level of validation is added to the AI's response which is also checked for safety content.
 
 ![Alt text](./public/terminator.png)
+![Alt text](./public/TypoTerminator.gif)
 
 
 
