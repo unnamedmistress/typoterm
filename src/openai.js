@@ -20,8 +20,7 @@ const openai = axios.create({
 const generateText = async (promptEssay, text, combinedText) => {
   console.log('generateText:', text);
   try {
-    const isFlagged = await moderateText(text);
-    if (!isFlagged) {
+
       const completion = await openai.post("/chat/completions", {
         model: "gpt-3.5-turbo-0301",
         messages: [{ role: "user", content: promptEssay + " " + text || combinedText }],
@@ -44,5 +43,5 @@ const generateText = async (promptEssay, text, combinedText) => {
   }
 };
 
-export { generateText, moderateText };
+export { generateText };
 

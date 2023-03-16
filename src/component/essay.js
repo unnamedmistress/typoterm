@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { generateText, moderateText } from '../openai.js';
+import { generateText } from '../openai.js';
 
 
 const Essay = () => {
