@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const How = () => {
   return (
-    <div className="bg-gradient-to-r from-teal-900 to-black min-h-screen flex justify-center items-center">
-      <div className="max-w-3xl w-full px-4">
+    <div className="bg-gradient-to-r  from-teal-900 to-black h-screen pt-24">
+    <div className="container bg-white mx-auto px-4 py-12 border-2 border-gray-400 rounded-lg text-center">
         <h1 className="text-4xl font-bold text-white mb-8">How to Use Typo Terminators</h1>
         <h2 className="text-2xl font-bold text-white mb-4">Frequently Asked Questions</h2>
         <h3 className="text-lg font-bold text-white mb-2">1. How do I generate a cover letter using Typo Terminators?</h3>
@@ -40,6 +40,7 @@ const How = () => {
         </p>
       </div>
     </div>
+
   );
 };
 
