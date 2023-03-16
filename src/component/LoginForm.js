@@ -31,6 +31,8 @@ const url = `${baseUrl}/api/login`;
       console.log(response);
 
       if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("token", data.token);
         props.setIsLoggedIn(true);
         handleLogin();
         navigate("/");

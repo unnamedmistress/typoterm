@@ -4,6 +4,7 @@ import { generateText } from "../openai.js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import CoverLetterView from './CoverLetterView.js';
+import LoadingSpinner from "./LoadingSpinner";
 import ApiResponseList from "./ApiResponseList.js"; // Import the ApiResponseList component
 
 const prompt = "Write a cover letter ";
@@ -20,7 +21,14 @@ const Cover = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/user/${userId}`);
+        const token = localStorage.getItem("token");
+        const response = await axios.get(`/api/user/${userId}/responses`, {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setUserData(response.data);
         setSavedCoverLetters(response.data.userResponses || []); // Set saved cover letters
       } catch (error) {
@@ -85,10 +93,12 @@ const Cover = (props) => {
       </div>
     ));
   };
+  
 
   return (
-    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
-      <div className="flex">
+    <div className="h-screen flex flex-col bg-gradient-to-r from-teal-900 to-black">
+      <div className="flex flex-1">
+        {/* Left sidebar */}
         <div className="w-1/4 bg-zinc-800 p-4">
           <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-4">Saved Links</h2>
           {renderLinks()}
@@ -98,6 +108,8 @@ const Cover = (props) => {
             onDeleteResponse={handleDeleteResponse}
           />
         </div>
+  
+        {/* Main content */}
         <div className="w-3/4 p-4">
           <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-8">Cover Letter Generator</h2>
           <div className="mb-12">
@@ -130,7 +142,7 @@ const Cover = (props) => {
               onClick={handleSubmit}
               disabled={isLoading}
             >
-              {isLoading ? "Loading..." : "Generate Cover Letter"}
+              {isLoading ? <LoadingSpinner /> : "Generate Cover Letter"}
             </button>
             {generatedText && isLoggedIn && (
               <button
@@ -160,6 +172,7 @@ const Cover = (props) => {
       </div>
     </div>
   );
+  
   
           }
         

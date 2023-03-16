@@ -7,23 +7,25 @@ import {authMiddleware} from './routes/utils/auth.js';
 
 const setupRoutes = (apiRouter) => {
 
-    apiRouter.post('/api/login', async (req, res) => {
-        const { username, password } = req.body;
-        const user = await User.findOne({ username });
-        console.log('user', user);
-        console.log('username', username);
-        console.log('password', password);
-      
-        if (!user) {
-          return res.status(401).json({ error: 'Invalid username or password' });
-        }
-      
-        if (password.trim() !== user.password.trim()) {
-          return res.status(401).json({ error: 'Invalid username or password' });
-        }
-      
-        res.status(200).json({ message: 'Login successful' });
-      });
+  apiRouter.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    console.log('user', user);
+    console.log('username', username);
+    console.log('password', password);
+  
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+  
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    if (!isPasswordCorrect) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+  
+    const token = signToken(user);
+    res.json({ token, message: 'Login successful' });
+  });
     
       // POST /api/signup
       apiRouter.post('/api/signup', async (req, res) => {
