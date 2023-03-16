@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useContext } from "react";
 import { generateText } from "../openai.js";
 import axios from "axios";
@@ -16,6 +15,15 @@ const Cover = (props) => {
   const [savedCoverLetters, setSavedCoverLetters] = useState([]); // Add state for saved cover letters
   const { isLoggedIn, userId } = props;
   const navigate = useNavigate();
+
+  const LOCAL_STORAGE_KEY = "temp_responses";
+
+  useEffect(() => {
+    const tempResponses = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (tempResponses) {
+      setSavedCoverLetters(tempResponses);
+    }
+  }, []);
 
   const LoadingSpinner = () => {
     return (
@@ -50,6 +58,20 @@ const Cover = (props) => {
     const response = await generateText(prompt, combinedText);
     setGeneratedText(response);
     setIsLoading(false);
+  };
+
+  const handleSaveTempResponse = () => {
+    if (!generatedText) {
+      window.alert("Please generate a cover letter first."); // Display an alert message
+      return;
+    }
+    const createdAt = new Date();
+    const newSavedCoverLetters = [
+      ...savedCoverLetters,
+      { cover: generatedText, createdAt },
+    ];
+    setSavedCoverLetters(newSavedCoverLetters);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newSavedCoverLetters));
   };
 
   const handleSaveResponse = async () => {
@@ -159,25 +181,25 @@ const Cover = (props) => {
             {generatedText && !isLoggedIn && (
               <button
                 className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                onClick={handleSaveResponse}
-                disabled={true}
+                onClick={handleSaveTempResponse}
               >
-                Log in to Save Response
+                Save Temporarily
               </button>
             )}
           </div>
         </div>
   
+        {/* Right column */}
         <div className="w-5/12 p-4 overflow-auto">
-  {generatedText && (
-    <div>
-      <h3 className="text-xl font-bold mb-2">Generated Cover Letter</h3>
-      <div className="text-gray-700 whitespace-pre-wrap overflow-auto h-64 border border-gray-300 p-2 rounded text-sm">
-        {generatedText}
-      </div>
-    </div>
-  )}
-</div>
+          {generatedText && (
+            <div>
+              <h3 className="text-xl font-bold mb-2">Generated Cover Letter</h3>
+              <div className="text-white whitespace-pre-wrap overflow-auto h-64 border border-gray-300 p-2 rounded text-sm">
+                {generatedText}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
