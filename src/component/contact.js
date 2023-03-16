@@ -4,7 +4,7 @@ const Contact = (props) => {
   return (
     <>
       <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24 text-white"> 
-      <img src="/assets/IMG_2662.PNG" alt="logo" className="mx-auto" />
+      <img src="/assets/IMG_2662.PNG" alt="logo" className="mx-auto" height="250" />
         <h1 style={{ textAlign: "center" }}>Contact</h1>
        
         <div className="flex justify-center">
