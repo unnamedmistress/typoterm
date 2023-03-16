@@ -22,7 +22,7 @@ const Essay = () => {
     <>
     <div className="bg-gradient-to-r from-teal-900 to-black h-screen ">
       <div className="flex">
-      <h1 className="text-5xl font-bold text-center text-green-800 hover:text-green-400">
+      <h1 className="text-5xl font-bold text-center text-teal-600 hover:text-teal-400">
         Essay Writer
       </h1>
       <p className="text-lg font-medium text-center text-gray-400 mt-2 mb-8">Create top-quality essays in minutes</p>
