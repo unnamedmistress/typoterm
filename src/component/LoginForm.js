@@ -1,11 +1,21 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-function LoginForm(props) {
+function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    console.log('handleLogin function called');
+    setIsLoggedIn(true);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const url = "/api/login";
     console.log("Sending POST request to:", url);
     try {
@@ -18,9 +28,11 @@ function LoginForm(props) {
         body: JSON.stringify({ username, password }),
       });
       console.log(response);
-      console.log("response.ok : " + response.ok);
+
       if (response.ok) {
-        props.onLogin();
+        props.setIsLoggedIn(true);
+        handleLogin();
+        navigate("/");
       } else {
         console.log(username + " : " + password);
         throw new Error("HTTP error " + response.status);
@@ -105,7 +117,7 @@ function LoginForm(props) {
             <button
               type="button"
               className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-              onClick={props.onSignupClick}
+              onClick={() => navigate('/')}
             >
               Sign up
             </button>
@@ -114,7 +126,6 @@ function LoginForm(props) {
       </div>
     </div>
   );
-}
+  }
 
-
-export default LoginForm
+export default LoginForm;

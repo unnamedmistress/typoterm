@@ -59,10 +59,11 @@ const App = () => {
   }, []);
 
   return (
-    <>
-     
-    </>
-  );
+    <div className="App">
+    {/* Render the LoginForm component */}
+    <LoginForm />
+  </div>
+);
 };
 
 
