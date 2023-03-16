@@ -2,6 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
+    <footer>
     <div className="bg-white py-7 pb-5 container max-w-full mx-auto h-auto flex flex-wrap">
       <div className="lg:w-1/3 px-4">
         <h3 className="font-bold text-gray-900 mb-4">About Us</h3>
@@ -38,6 +39,7 @@ const Footer = () => {
          </p>
       </div>
     </div>
+    </footer>
   );
 };
 

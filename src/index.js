@@ -32,8 +32,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/response-form" element={<ResponseForm />} />
         <Route path="/login" element={<LoginForm onSignupClick={() => history.push('/signup')} />} />
       </Routes>
-      <Footer />
       <App />
+      <Footer />
     </Router>
   </React.StrictMode>
 );

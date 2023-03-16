@@ -19,7 +19,8 @@ const Essay = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
+    <>
+    <div className="bg-gradient-to-r from-teal-900 to-black h-screen ">
       <div className="flex">
       <h1 className="text-5xl font-bold text-center text-green-800 hover:text-green-400">
         Essay Writer
@@ -53,6 +54,7 @@ const Essay = () => {
       </div>
       </div>
     </div>
+    </>
   );
 };
 
