@@ -28,7 +28,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/coverLetter" element={<Cover />} />
         <Route path="/useraccount" element={<UserAccount />} />
         <Route path="/response-form" element={<ResponseForm />} />
-        <Route path="/login" element={<LoginForm onSignupClick={() => history.push('/signup')} />} />
+        <Route path="/login" element={<LoginForm />} />
       </Routes>
       <App />
       <Footer />
