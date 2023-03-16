@@ -1,24 +1,37 @@
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const MainPage = () => {
-    return (
-        <>
-  <div className="bg-gradient-to-r  from-teal-900 to-black">
-
-  <div className="flex flex-col lg:flex-row items-center justify-evenly py-12 px-4 h-screen">
-  <div className="lg:w-1/2 text-white mx-auto">
-    <h1 className="text-4xl font-bold mb-4">Welcome to Typo Terminator</h1>
-    <p className="text-lg mb-4">A one-stop solution for all your essay formatting needs.</p>
-    <a href="/how" className="bg-white text-teal-600 py-2 px-4 rounded-full font-bold uppercase tracking-wide hover:bg-teal-500 hover:text-white transition duration-200 ease-in-out">Learn More</a>
-
-  </div>
-  <div className="object-none h-80 w-96 " style={{backgroundImage: "url('/assets/IMG_2662.PNG')", backgroundSize: "cover"}}></div>
-  <div className="lg:w-1/2 mt-8 lg:mt-0 flex justify-end">
-    <a href="/login" className="text-white hover:text-teal-600 font-bold py-2 px-4 mr-4 rounded-full bg-teal-600 hover:bg-gray-300 transition duration-200 ease-in-out">Log In</a>
-    <a href="/login" className="text-teal-600 hover:text-white font-bold py-2 px-4 rounded-full bg-white hover:bg-teal-800 transition duration-200 ease-in-out">Sign Up</a>
-  </div>
-</div>
+  return (
+    <>
+      <div className="bg-gradient-to-r  from-teal-900 to-black">
+        <div className="flex flex-col lg:flex-row items-center justify-evenly py-12 px-4 h-screen">
+          <div className="lg:w-1/2 text-white mx-auto">
+            <h1 className="text-4xl font-bold mb-4">Welcome to Typo Terminator</h1>
+            <p className="text-lg mb-4">A one-stop solution for all your essay formatting needs.</p>
+            <Link
+              to="/how"
+              className="bg-white text-teal-600 py-2 px-4 rounded-full font-bold uppercase tracking-wide hover:bg-teal-500 hover:text-white transition duration-200 ease-in-out"
+            >
+              Learn More
+            </Link>
+          </div>
+          <div className="object-none h-80 w-96" style={{ backgroundImage: "url('/assets/IMG_2662.PNG')", backgroundSize: "cover" }}></div>
+          <div className="lg:w-1/2 mt-8 lg:mt-0 flex justify-end">
+            <Link
+              to="/login"
+              className="text-white hover:text-teal-600 font-bold py-2 px-4 mr-4 rounded-full bg-teal-600 hover:bg-gray-300 transition duration-200 ease-in-out"
+            >
+              Log In
+            </Link>
+            <Link
+              to="/signup"
+              className="text-teal-600 hover:text-white font-bold py-2 px-4 rounded-full bg-white hover:bg-teal-800 transition duration-200 ease-in-out"
+            >
+              Sign Up
+            </Link>
+          </div>
+        </div>
 
 
 
