@@ -42,7 +42,9 @@ db.once('open', function() {
 
 setupRoutes(apiRouter); // Use setupRoutes to set up routes on the apiRouter
 app.use(apiRouter); // Use apiRouter in the main app
-
+apiRouter.get('*', (req, res) => {
+  res.sendFile(path.resolve('public', 'index.html'));
+});
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {

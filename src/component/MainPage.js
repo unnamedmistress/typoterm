@@ -16,7 +16,7 @@ const MainPage = () => {
   Learn More
 </Link>
           </div>
-          <div className="object-none h-80 w-96" style={{ backgroundImage: "url('/assets/robot.png')", backgroundSize: "cover" }}></div>
+          <div className="object-none h-80 w-96" style={{ backgroundImage: "url('/assets/IMG_2662.png')", backgroundSize: "cover" }}></div>
           <div className="lg:w-1/2 mt-8 lg:mt-0 flex justify-end">
           <Link
   to="/login"
