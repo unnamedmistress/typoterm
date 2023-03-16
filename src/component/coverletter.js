@@ -103,8 +103,8 @@ const Cover = (props) => {
     <div className="h-screen flex flex-col bg-gradient-to-r from-teal-900 to-black">
       <div className="flex flex-1">
         {/* Left sidebar */}
-        <div className="w-1/6 bg-zinc-800 p-4">
-          <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-4">Saved Links</h2>
+        <div className="w-1/3 bg-zinc-800 p-4">
+          <h2 className="text-xl text-white hover:text-teal-400 font-bold mb-4 text-sm">Saved Links</h2>
           {renderLinks()}
           <ApiResponseList
             responses={savedCoverLetters}
@@ -113,7 +113,7 @@ const Cover = (props) => {
           />
         </div>
   
-        {/* Middle section */}
+        {/* Main content */}
         <div className="w-2/3 p-4">
           <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-8">Cover Letter Generator</h2>
           <div className="mb-12">
@@ -166,14 +166,12 @@ const Cover = (props) => {
               </button>
             )}
           </div>
-        </div>
-  
-        {/* Right sidebar */}
-        <div className="w-1/6 p-4">
           {generatedText && (
             <div>
               <h3 className="text-xl font-bold mb-2">Generated Cover Letter</h3>
-              <p className="text-gray-700 whitespace-pre-wrap">{generatedText}</p>
+              <div className="text-gray-700 whitespace-pre-wrap overflow-auto h-64 border border-gray-300 p-2 rounded">
+                {generatedText}
+              </div>
             </div>
           )}
         </div>
