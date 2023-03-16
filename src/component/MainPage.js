@@ -7,12 +7,14 @@ const image = `url:"https://github.com/unnamedmistress/typoterm/blob/main/public
 const MainPage = () => {
   return (
     <>
-    <div
-        className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24 text-white"
-        style={{
-          background: `url(https://github.com/unnamedmistress/typoterm/blob/main/public/assets/IMG_2662.PNG?raw=true) center center / cover no-repeat`,
-        }}
-      >
+    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24 text-white">
+        <div className="flex justify-center">
+          <img
+            src="https://github.com/unnamedmistress/typoterm/blob/main/public/assets/IMG_2662.PNG?raw=true"
+            alt="Centered"
+            className="max-w-full max-h-full"
+          />
+        </div>
         <div className="flex flex-col lg:flex-row items-center justify-evenly py-12 px-4 h-screen">
           <div className="lg:w-1/2 text-white mx-auto">
             <h1 className="text-4xl font-bold mb-4">Welcome to Typo Terminator</h1>
