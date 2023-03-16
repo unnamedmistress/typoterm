@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-
-
-
+import React from "react";
 
 const contact = (props) => {
   return (
+    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
     <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24 text-white">
     <div>
       <h1 style={{ textAlign: "center" }}>Contact</h1>
@@ -96,10 +94,8 @@ const contact = (props) => {
 </div>
     </div>
     </div>
-
     
   );
-}
+};
 
-
-export default contact
+export default Contact;
