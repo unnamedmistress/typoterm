@@ -3,10 +3,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const How = () => {
   return (
-    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
-    <div className="container">
-      <h1>How to Use Tutor Genie</h1>
-      <h2>Frequently Asked Questions</h2>
+    <div className="bg-gradient-to-r  from-teal-900 to-black h-screen pt-24">
+    <div className="container bg-white mx-auto px-4 py-12 border-2 border-gray-400 rounded-lg text-center">
+    <h1 class="text-4xl  mb-6">How to Use Tutor Genie</h1>
+      <h2  class="text-2xl mb-6">Frequently Asked Questions</h2>
+      
       <h3>1. How do I start a conversation with Tutor Genie?</h3>
       <p>
         To start a conversation with Tutor Genie, simply type your message in the
@@ -19,7 +20,7 @@ const How = () => {
         If the text is not appropriate, the message will not be sent and you will be prompted to
         enter a different message.
         The AI is also instructed to not respond to questions about sex, drugs or violence.
-
+  
       </p>
       <h3>3. How do I end the conversation with Tutor Genie?</h3>
       <p>
@@ -46,7 +47,9 @@ const How = () => {
             to be used as a supplement to studying. You should use it to enhance your learning.
       </p>
     </div>
-    </div>
+  </div>
+  
+
   );
 };
 
