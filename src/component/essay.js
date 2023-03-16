@@ -22,14 +22,15 @@ const Essay = () => {
     <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
       <div className="flex">
       <h1 className="text-5xl font-bold text-center text-green-800 hover:text-green-400">
-        Essay Generator
+        Essay Writer
       </h1>
+      <p className="text-lg font-medium text-center text-gray-400 mt-2 mb-8">Create top-quality essays in minutes</p>
       <div className="w-3/4 p-4">
         <textarea
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           rows="10"
           type="text"
-          placeholder="Write your Essay here..."
+          placeholder="Enter your essay topic here..."
           value={inputText}
           onChange={handleInputChange}
         />
