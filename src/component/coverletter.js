@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useContext } from "react";
 import { generateText } from "../openai.js";
 import axios from "axios";
@@ -89,7 +90,7 @@ const Cover = (props) => {
     <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
       <div className="flex">
         <div className="w-1/4 bg-zinc-800 p-4">
-          <h2 className="text-2xl text-green-700 hover:text-green-400 font-bold mb-4">Saved Links</h2>
+          <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-4">Saved Links</h2>
           {renderLinks()}
           <ApiResponseList
             responses={savedCoverLetters}
@@ -98,9 +99,9 @@ const Cover = (props) => {
           />
         </div>
         <div className="w-3/4 p-4">
-          <h2 className="text-2xl text-green-700 hover:text-green-400 font-bold mb-4">Cover Letter Generator</h2>
-          <div className="mb-4">
-            <label className="block text-green-500 text-sm font-bold mb-2" htmlFor="resumeText">
+          <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-8">Cover Letter Generator</h2>
+          <div className="mb-12">
+            <label className="block text-teal-500 text-sm font-bold mb-2" htmlFor="resumeText">
               Paste your Resume here
             </label>
             <textarea
@@ -111,8 +112,8 @@ const Cover = (props) => {
               onChange={(e) => setResumeText(e.target.value)}
             ></textarea>
           </div>
-          <div className="mb-4">
-            <label className="block text-green-500 text-sm font-bold mb-2" htmlFor="jobDescriptionText">
+          <div className="mb-8">
+            <label className="block text-teal-500 text-sm font-bold mb-2" htmlFor="jobDescriptionText">
               Paste your Job Description here
             </label>
             <textarea
@@ -125,7 +126,7 @@ const Cover = (props) => {
           </div>
           <div className="mb-4">
             <button
-              className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4"
+              className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4"
               onClick={handleSubmit}
               disabled={isLoading}
             >
@@ -133,7 +134,7 @@ const Cover = (props) => {
             </button>
             {generatedText && isLoggedIn && (
               <button
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={handleSaveResponse}
               >
                 Save Response
@@ -141,7 +142,7 @@ const Cover = (props) => {
             )}
             {generatedText && !isLoggedIn && (
               <button
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 onClick={handleSaveResponse}
                 disabled={true}
               >
