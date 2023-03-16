@@ -8,7 +8,7 @@ const MainPage = () => {
   return (
     <>
      <div className="bg-gradient-to-r  from-teal-900 to-black">
-        <div className="object-none h-80 w-96" style={{ backgroundImage: `url(${image})`, backgroundSize: "cover" }}></div>
+        <div className="object-none h-80 w-96" ><img src="https://github.com/unnamedmistress/typoterm/blob/main/public/assets/IMG_2662.PNG?raw=true" alt="logo" className="mx-auto" height="250px" style={{ maxWidth: "100%", maxHeight: "250px", objectFit: "contain" }} /></div>
         <div className="flex flex-col lg:flex-row items-center justify-evenly py-12 px-4 h-screen">
           <div className="lg:w-1/2 text-white mx-auto">
             <h1 className="text-4xl font-bold mb-4">Welcome to Typo Terminator</h1>
