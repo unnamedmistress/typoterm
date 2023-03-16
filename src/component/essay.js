@@ -6,7 +6,7 @@ const Essay = () => {
   const [inputText, setInputText] = useState("");
   const [generatedText, setGeneratedText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const promptEssay = "Edit this text, and provide 5 steps to improve Essay";
+  const promptEssay = "Write a short essay about text input";
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
