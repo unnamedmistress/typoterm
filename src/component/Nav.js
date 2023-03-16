@@ -10,7 +10,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
     <li className="flex items-center">
   <div className="object-none h-8 w-8 mr-2" style={{backgroundImage: "url('/assets/IMG_2656.PNG')", backgroundSize: "cover"}}></div>
   <NavLink className="text-white hover:text-teal-400 font-bold text-xl uppercase" to="/">
-    Essay App
+    TTerminator
   </NavLink>
 </li>
       <li>
@@ -28,7 +28,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
               className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
               to="/essay-helper"
             >
-              Essay Helper
+              Essay
             </NavLink>
           </li>
           <li>
@@ -36,7 +36,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
               className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
               to="/coverLetter"
             >
-              CoverLetter Generator
+              Cover Letter
             </NavLink>
           </li>
           <li>
@@ -44,7 +44,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
               className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
               to="/contact"
             >
-              Contact Us
+              Contact
             </NavLink>
           </li>
         </ul>
