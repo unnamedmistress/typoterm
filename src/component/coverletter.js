@@ -191,12 +191,16 @@ const Cover = (props) => {
   
         {/* Right column */}
         <div className="w-5/12 p-4 overflow-auto">
-          {generatedText && (
-            <div>
-              <h3 className="text-xl font-bold mb-2">Generated Cover Letter</h3>
-              <div className="text-white whitespace-pre-wrap overflow-auto h-64 border border-gray-300 p-2 rounded text-sm">
-                {generatedText}
-              </div>
+  {generatedText && (
+    <div>
+      <h3 className="text-xl font-bold mb-2">Generated Cover Letter</h3>
+      <div
+        contentEditable
+        className="text-white whitespace-pre-wrap overflow-auto h-auto min-h-64 resize-y border border-gray-300 p-2 rounded text-sm"
+        suppressContentEditableWarning={true}
+      >
+        {generatedText}
+      </div>
             </div>
           )}
         </div>
