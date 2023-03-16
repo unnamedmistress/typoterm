@@ -3,10 +3,10 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer>
-    <div className="bg-white py-7 pb-5 container max-w-full mx-auto h-auto flex flex-wrap">
+     <div className="bg-white py-7 pb-5 container max-w-full mx-auto h-auto flex flex-wrap justify-evenly">
       <div className="lg:w-1/3 px-4">
         <h3 className="font-bold text-gray-900 mb-4">About Us</h3>
-        <p className="text-gray-700">Typo Terminator is designed to provide you with a simple and user-friendly experience,
+        <p className="text-sm text-gray-700">Designed to provide you with a simple and user-friendly experience,
          allowing you to focus on what matters most: creating top-quality essays that will impress your professors and colleagues.</p>
       </div>
       <div className="w-full lg:w-1/3 px-4">
@@ -28,13 +28,13 @@ const Footer = () => {
       </div>
       <div className="w-full lg:w-1/3 px-4">
         <h3 className="font-bold text-gray-900 mb-4">Easy Write!</h3>
-        <p className="text-gray-700">
+        <p className="text-sm text-gray-700">
         • AI Powered Research.
         </p>
-        <p className="text-gray-700">
+        <p className="text-sm text-gray-700">
         • Meticulously crafted essays.
         </p>
-        <p className="text-gray-700">
+        <p className="text-sm text-gray-700">
         • Proffesional quality cover letters.
          </p>
       </div>
