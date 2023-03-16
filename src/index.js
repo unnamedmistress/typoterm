@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM, { createRoot } from 'react-dom/client'; // Import ReactDOM and createRoot together
+import ReactDOM, { createRoot } from 'react-dom/client';
 import App from './App.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './component/tailwind.css';
@@ -14,8 +14,6 @@ import LoginForm from "./component/LoginForm.js";
 import SignupForm from "./component/SignupForm.js";
 import Footer from './component/footer.js';
 import MainPage from './component/MainPage.js';
-
-
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -37,4 +35,3 @@ createRoot(document.getElementById('root')).render(
     </Router>
   </React.StrictMode>
 );
-
