@@ -16,7 +16,8 @@ function LoginForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const url = "/api/login";
+    const baseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
+const url = `${baseUrl}/api/login`;
     console.log("Sending POST request to:", url);
     try {
       const response = await fetch(url, {
