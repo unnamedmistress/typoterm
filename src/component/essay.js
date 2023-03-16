@@ -19,20 +19,12 @@ const Essay = () => {
   };
 
   return (
-    <div className="pb-80 pt-24 bg-zinc-900">
-      <h1 className="text-5xl font-bold text-center text-green-800 hover:text-green-400 mb-8">
+    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
+      <div className="flex">
+      <h1 className="text-5xl font-bold text-center text-green-800 hover:text-green-400">
         Essay Generator
       </h1>
-      <p className="text-lg font-semibold text-center text-green-500 hover:text-green-300 mb-40">
-        Follow these instructions to create your Essay. <br></br><br></br> Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit.Lorem ipsum dolor sit amet <br></br>
-        consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        <br></br> <br></br><br></br>
-        Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit.Lorem ipsum dolor sit amet <br></br>
-        consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </p>
-      <div className="w-1/2 mx-auto p-4">
+      <div className="w-3/4 p-4">
         <textarea
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           rows="10"
@@ -57,6 +49,7 @@ const Essay = () => {
             <p className="text-lg text-gray-700">{generatedText}</p>
           </div>
         )}
+      </div>
       </div>
     </div>
   );
