@@ -3,35 +3,9 @@ import mongoose from 'mongoose';
 import User from './data/User.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import authMiddleware from './src/utils/auth.js';
-
-const getAllUsers = async (req, res) => {
-  try {
-    const users = await User.find({});
-    res.status(200).json({ success: true, users });
-  } catch (error) {
-    console.error('Error while fetching all users:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
-
-const getUserById = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const user = await User.findById(id);
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    res.status(200).json({ success: true, user });
-  } catch (error) {
-    console.error('Error while fetching user by ID:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
+import {authMiddleware} from './routes/utils/auth.js';
 
 const setupRoutes = (apiRouter) => {
-    apiRouter.route('/api/user').get(getAllUsers);
-    apiRouter.route('/api/user/:id').get(getUserById);
 
     apiRouter.post('/api/login', async (req, res) => {
         const { username, password } = req.body;
@@ -50,7 +24,7 @@ const setupRoutes = (apiRouter) => {
       
         res.status(200).json({ message: 'Login successful' });
       });
-      
+    
       // POST /api/signup
       apiRouter.post('/api/signup', async (req, res) => {
         const { username, password } = req.body;
