@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const How = () => {
   return (
-    <div className="bg-gradient-to-r  from-teal-900 to-black">
-    <div className="container h-screen">
+    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
+    <div className="container">
       <h1>How to Use Tutor Genie</h1>
       <h2>Frequently Asked Questions</h2>
       <h3>1. How do I start a conversation with Tutor Genie?</h3>

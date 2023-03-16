@@ -86,7 +86,7 @@ const Cover = (props) => {
   };
 
   return (
-    <div className="pb-80 pt-24 bg-zinc-900">
+    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
       <div className="flex">
         <div className="w-1/4 bg-zinc-800 p-4">
           <h2 className="text-2xl text-green-700 hover:text-green-400 font-bold mb-4">Saved Links</h2>
