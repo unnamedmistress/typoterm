@@ -1,17 +1,16 @@
 import React from "react";
 
-const contact = (props) => {
+const Contact = (props) => {
   return (
-    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
-    <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24 text-white">
-    <div>
-      <h1 style={{ textAlign: "center" }}>Contact</h1>
-    </div>
+    <>
+      <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24 text-white">
+        <h1 style={{ textAlign: "center" }}>Contact</h1>
+      </div>
 
     <div className="flex justify-center">
     <div className="flex-grow border rounded-lg p-4 mr-4">
       <p>Name: Chrysti Browne</p>
-      <p>Email: chrysty@email.com</p>
+      <p>Email: momchrysti@gmail.com</p>
       <p><a href="https://github.com/johnsmith"><svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
@@ -93,8 +92,7 @@ const contact = (props) => {
   </svg></a></p>
 </div>
     </div>
-    </div>
-    
+    </>
   );
 };
 
