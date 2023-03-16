@@ -103,7 +103,7 @@ const Cover = (props) => {
     <div className="h-screen flex flex-col bg-gradient-to-r from-teal-900 to-black">
       <div className="flex flex-1">
         {/* Left sidebar */}
-        <div className="w-1/3 bg-zinc-800 p-4">
+        <div className="w-1/6 bg-zinc-800 p-4 overflow-auto">
           <h2 className="text-xl text-white hover:text-teal-400 font-bold mb-4 text-sm">Saved Links</h2>
           {renderLinks()}
           <ApiResponseList
@@ -113,8 +113,8 @@ const Cover = (props) => {
           />
         </div>
   
-        {/* Main content */}
-        <div className="w-2/3 p-4">
+        {/* Middle column */}
+        <div className="w-5/12 p-4 overflow-auto">
           <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-8">Cover Letter Generator</h2>
           <div className="mb-12">
             <label className="block text-teal-500 text-sm font-bold mb-2" htmlFor="resumeText">
@@ -166,15 +166,18 @@ const Cover = (props) => {
               </button>
             )}
           </div>
-          {generatedText && (
-            <div>
-              <h3 className="text-xl font-bold mb-2">Generated Cover Letter</h3>
-              <div className="text-gray-700 whitespace-pre-wrap overflow-auto h-64 border border-gray-300 p-2 rounded">
-                {generatedText}
-              </div>
-            </div>
-          )}
         </div>
+  
+        <div className="w-5/12 p-4 overflow-auto">
+  {generatedText && (
+    <div>
+      <h3 className="text-xl font-bold mb-2">Generated Cover Letter</h3>
+      <div className="text-gray-700 whitespace-pre-wrap overflow-auto h-64 border border-gray-300 p-2 rounded text-sm">
+        {generatedText}
+      </div>
+    </div>
+  )}
+</div>
       </div>
     </div>
   );

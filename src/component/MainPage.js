@@ -31,9 +31,6 @@ const MainPage = () => {
   <div className="absolute inset-0 h-full w-full bg-cover bg-center bg-no-repeat z-0" style={{ backgroundImage: "url('/assets/robot.png')" }}></div>
 </div>
 
-
-
-
 <div className=" py-12">
   <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 className="text-3xl font-extrabold text-white mb-4">Reviews</h2>

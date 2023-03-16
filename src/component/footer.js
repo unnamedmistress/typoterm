@@ -28,14 +28,14 @@ const Footer = () => {
       </div>
       <div className="w-full lg:w-1/3 px-4">
         <h3 className="font-bold text-gray-900 mb-4">Easy Write!</h3>
-        <p className="text-sm text-gray-700">
-        • AI Powered Research.
+        <p className="text-gray-700">
+        • AI Powered.
         </p>
-        <p className="text-sm text-gray-700">
-        • Meticulously crafted essays.
+        <p className="text-gray-700">
+        • Technically crafted to provide you the best essays.
         </p>
-        <p className="text-sm text-gray-700">
-        • Proffesional quality cover letters.
+        <p className="text-gray-700">
+        • Professional quality cover letters.
          </p>
       </div>
     </div>
