@@ -17,8 +17,8 @@ const openai = axios.create({
   },
 });
 
-const moderateText = async (text) => {
-  const response = await openai.post("/moderations", { text,combinedText });
+const moderateText = async (text, combinedText) => {
+  const response = await openai.post("/moderations", { text, combinedText });
   console.log(response.data);
   console.log(response.data.results[0].flagged);
   if (response.data.rejected) {
