@@ -6,12 +6,7 @@ const MainPage = () => {
     <>
       <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24 text-white  mx-auto">
       <div className="container mx-auto">
-          <div className="flex flex-col items-center justify-center h-screen">
-            <img
-              src="https://github.com/unnamedmistress/typoterm/blob/main/public/assets/IMG_2662.PNG?raw=true"
-              alt="Centered"
-              className="max-w-full max-h-full h-64 mb-8"
-            />
+          
             <h1 className="text-4xl font-bold mb-4">Welcome to Typo Terminator</h1>
             <p className="text-lg mb-4">A one-stop solution for all your essay formatting needs.</p>
             <div className="flex flex-col md:flex-row items-center justify-center mb-8">
@@ -33,6 +28,12 @@ const MainPage = () => {
               >
                 Sign Up
               </Link>
+              <div className="flex flex-col items-center justify-center h-screen">
+            <img
+              src="https://github.com/unnamedmistress/typoterm/blob/main/public/assets/IMG_2662.PNG?raw=true"
+              alt="Centered"
+              className="max-w-full max-h-full h-64 mb-8"
+            />
             </div>
             <div className="py-12">
               <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
