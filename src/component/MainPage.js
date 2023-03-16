@@ -7,9 +7,10 @@ const MainPage = () => {
         <div className="bg-gradient-to-r  from-teal-900 to-black">
   <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between  py-12 px-4 h-screen">
   <div className="lg:w-1/2 text-white mx-auto">
-    <h1 className="text-4xl font-bold mb-4">Typo Terminator</h1>
-    <p className="text-lg mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum euismod mauris vel tellus aliquam, id pharetra enim lobortis.</p>
-    <a href="/how" className="bg-white shadow-xl text-indigo-500 py-2 px-4 rounded-full font-bold uppercase tracking-wide hover:bg-indigo-600 hover:text-white transition duration-200 ease-in-out">Learn More</a>
+    <h1 className="text-4xl font-bold mb-4">Welcome to Typo Terminator</h1>
+    <p className="text-lg mb-4">A one-stop solution for all your essay formatting needs.</p>
+    <a href="/how" className="bg-white text-blue-500 py-2 px-4 rounded-full font-bold uppercase tracking-wide hover:bg-blue-600 hover:text-white transition duration-200 ease-in-out">Learn More</a>
+
     
   </div>
   <div className="lg:w-1/2 mt-8 lg:mt-0 flex justify-end">
