@@ -5,13 +5,14 @@ import { LoginButton } from './LogButton.js';
 
 const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
   return (
-    <div className="bg-gradient-to-r  from-teal-900 to-black">
+<div className="bg-gradient-to-r  from-teal-900 to-black">
     <ul className="flex justify-between items-center py-4 px-6">
-      <li>
-        <NavLink className="text-white hover:text-teal-400 font-bold text-xl uppercase" to="/">
-          Essay App
-        </NavLink>
-      </li>
+    <li className="flex items-center">
+  <div className="object-none h-8 w-8 mr-2" style={{backgroundImage: "url('/assets/IMG_2656.PNG')", backgroundSize: "cover"}}></div>
+  <NavLink className="text-white hover:text-teal-400 font-bold text-xl uppercase" to="/">
+    Essay App
+  </NavLink>
+</li>
       <li>
         <ul className="flex justify-between items-center space-x-4">
           <li>
