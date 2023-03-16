@@ -12,12 +12,12 @@ const openai = axios.create({
   },
 });
 
-const generateText = async (promptEssay, text, combinedText) => {
+const generateText = async (promptEssay, text, combinedText, inputText) => {
   console.log('generateText:', text);
   try {
     const completion = await openai.post("/chat/completions", {
       model: "gpt-3.5-turbo-0301",
-      messages: [{ role: "user", content: promptEssay + " " + text || combinedText }],
+      messages: [{ role: "user", content: promptEssay + inputText + " " + text || combinedText }],
       n: 1,
       stop: null,
       max_tokens: 1000,

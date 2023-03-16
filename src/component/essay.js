@@ -6,7 +6,7 @@ const Essay = () => {
   const [inputText, setInputText] = useState("");
   const [generatedText, setGeneratedText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const promptEssay = "Write a short essay about text input";
+  const promptEssay = "Edit and improve this essay, after, show a 5 point bullet point list of the essay's possible improvements";
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
@@ -37,7 +37,7 @@ const Essay = () => {
         Essay Generator
 
       </h1>
-      <p className="text-lg font-medium text-center text-gray-400 mt-2 mb-8">Create top-quality essays in minutes</p>
+      <p className="text-lg font-medium text-center text-gray-400 mt-2 mb-8">Get a perfectly edited final version of your essay</p>
     </div>
         <div className="w-3/4 p-4">
           
@@ -45,7 +45,7 @@ const Essay = () => {
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         rows="5"
         type="text"
-        placeholder="Enter your essay topic here..."
+        placeholder="Paste your essay here to get a perfectly edited final version and 5 areas for improvement"
         value={inputText}
         onChange={handleInputChange}
       />
