@@ -100,43 +100,41 @@ const Cover = (props) => {
   
 
   return (
-
-    <>
-    <div className="bg-gradient-to-r from-teal-900 to-black pt-24 pb-40">
-      <div className="flex">
-        {/* <div className="w-1/4 bg-zinc-800 p-4">
-
-          <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-4">Saved Links</h2>
+    <div className="h-screen flex flex-col bg-gradient-to-r from-teal-900 to-black">
+      <div className="flex flex-1">
+        {/* Left sidebar */}
+        <div className="w-1/3 bg-zinc-800 p-4">
+          <h2 className="text-xl text-white hover:text-teal-400 font-bold mb-4 text-sm">Saved Links</h2>
           {renderLinks()}
           <ApiResponseList
             responses={savedCoverLetters}
             onViewResponse={handleViewResponse}
             onDeleteResponse={handleDeleteResponse}
           />
-        </div> */}
-        <div className="flex-grow">
-      <h1 className="text-5xl font-bold text-center text-white">
-        Cover Letter Generator
-      </h1>
-      <p className="text-lg font-medium text-center text-gray-400 mt-2 mb-8">Create top-quality cover letters in minutes</p>
-    </div>
-        <div className="w-3/4 p-4">
-         
+        </div>
+  
+        {/* Main content */}
+        <div className="w-2/3 p-4">
+          <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-8">Cover Letter Generator</h2>
           <div className="mb-12">
+            <label className="block text-teal-500 text-sm font-bold mb-2" htmlFor="resumeText">
+              Paste your Resume here
+            </label>
             <textarea
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="resumeText"
-              placeholder="Paste your Resume here..."
               rows="5"
               value={resumeText}
               onChange={(e) => setResumeText(e.target.value)}
             ></textarea>
           </div>
           <div className="mb-8">
+            <label className="block text-teal-500 text-sm font-bold mb-2" htmlFor="jobDescriptionText">
+              Paste your Job Description here
+            </label>
             <textarea
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="jobDescriptionText"
-              placeholder="Paste your Job Description here..."
               rows="5"
               value={jobDescriptionText}
               onChange={(e) => setJobDescriptionText(e.target.value)}
@@ -168,22 +166,17 @@ const Cover = (props) => {
               </button>
             )}
           </div>
-        </div>
-  
-        {/* Right sidebar */}
-        <div className="w-1/6 p-4">
           {generatedText && (
-            <div className="mt-8 bg-gray-100 border border-gray-400 rounded py-4 px-6 ">
-              <h3 className="text-white text-xl font-bold mb-2 mt-4">Generated Cover Letter:</h3>
-              <p className="text-lg text-gray-700 whitespace-pre-wrap">{generatedText}</p>
+            <div>
+              <h3 className="text-xl font-bold mb-2">Generated Cover Letter</h3>
+              <div className="text-gray-700 whitespace-pre-wrap overflow-auto h-64 border border-gray-300 p-2 rounded">
+                {generatedText}
+              </div>
             </div>
           )}
         </div>
       </div>
     </div>
-
-
-    </>
   );
   
           }
