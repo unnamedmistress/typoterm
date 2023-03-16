@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 const MainPage = () => {
   return (
     <>
-      <div className="bg-gradient-to-r  from-teal-900 to-black">
+      <div className="bg-gradient-to-r  from-teal-900 to-black"> 
+      <div className="object-none h-80 w-96" style={{ backgroundImage: "url('./public/assets/IMG_2662.png')", backgroundSize: "cover" }}></div>
         <div className="flex flex-col lg:flex-row items-center justify-evenly py-12 px-4 h-screen">
           <div className="lg:w-1/2 text-white mx-auto">
             <h1 className="text-4xl font-bold mb-4">Welcome to Typo Terminator</h1>
             <p className="text-lg mb-4">A one-stop solution for all your essay formatting needs.</p>
-           <div className="object-none h-80 w-96" style={{ backgroundImage: "url('/assets/IMG_2662.png')", backgroundSize: "cover" }}></div>  <Link
+            <Link
   to="/how"
   className="bg-white text-teal-600 py-2 px-4 rounded-full font-bold uppercase tracking-wide hover:bg-teal-500 hover:text-white transition duration-200 ease-in-out"
 >

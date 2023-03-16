@@ -4,8 +4,9 @@ const Contact = (props) => {
   return (
     <>
       <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24 text-white"> 
-      <img src="/assets/IMG_2662.PNG" alt="logo" className="mx-auto" height="250" />
+      <img src="/assets/IMG_2662.PNG" alt="logo" className="mx-auto" height="250px" />
         <h1 style={{ textAlign: "center" }}>Contact</h1>
+        <h3 style={{ textAlign: "center" }}>Email:momchrystick@gmail.com</h3 />
        
         <div className="flex justify-center">
     <div className="flex-grow border rounded-lg p-4 mr-4">
