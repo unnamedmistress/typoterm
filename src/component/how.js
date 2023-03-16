@@ -2,6 +2,7 @@ import React from 'react';
 
 const How = () => {
   return (
+
     <div className="bg-gradient-to-r from-teal-900 to-black h-screen pt-24">
       <div className="container bg-white mx-auto px-4 py-12 border-2 border-gray-400 rounded-lg text-center">
         <h1 className="text-4xl font-bold text-teal-900 mb-8">
