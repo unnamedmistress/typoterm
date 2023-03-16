@@ -18,7 +18,7 @@ const openai = axios.create({
 });
 
 const moderateText = async (text) => {
-  const response = await openai.post("/moderations", { input: text });
+  const response = await openai.post("/moderations", { text,combinedText });
   console.log(response.data);
   console.log(response.data.results[0].flagged);
   if (response.data.rejected) {
@@ -34,7 +34,7 @@ const generateText = async (promptEssay, text, combinedText) => {
     if (!isFlagged) {
       const completion = await openai.post("/chat/completions", {
         model: "gpt-3.5-turbo-0301",
-        messages: [{ role: "user", content: promptEssay || promptOutline + " " + text || combinedText }],
+        messages: [{ role: "user", content: promptEssay + " " + text || combinedText }],
         n: 1,
         stop: null,
         max_tokens: 1000,

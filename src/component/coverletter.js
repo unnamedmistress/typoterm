@@ -54,7 +54,7 @@ const Cover = (props) => {
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    const combinedText = `Resume: ${resumeText}\n\nJob Description: ${jobDescriptionText}`;
+    const combinedText = `Generate a cover letter for: Resume: ${resumeText}\n\nJob Description: ${jobDescriptionText}`;
     const response = await generateText(prompt, combinedText);
     setGeneratedText(response);
     setIsLoading(false);
