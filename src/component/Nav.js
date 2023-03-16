@@ -21,15 +21,7 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
             >
               How It Works
             </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
-              to="/contact"
-            >
-              Contact Us
-            </NavLink>
-          </li>
+          </li>   
           <li>
             <NavLink
               className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
@@ -46,23 +38,14 @@ const Nav = ({ isLoggedIn, handleLogout, handleLogin, children }) => {
               CoverLetter Generator
             </NavLink>
           </li>
-          {isLoggedIn ? (
+          <li>
             <NavLink
               className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
-              to="/logout-form"
+              to="/contact"
             >
-              logout
+              Contact Us
             </NavLink>
-          ) : (
-            <li>
-              <NavLink
-                className="text-white hover:text-teal-400 font-semibold text-sm uppercase"
-                to="/login"
-              >
-                login
-              </NavLink>
-            </li>
-          )}
+          </li>
         </ul>
       </li>
     </ul>
