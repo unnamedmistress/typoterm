@@ -104,7 +104,7 @@ const Cover = (props) => {
   };
   const handleViewResponse = (index) => {
     const coverLetter = savedCoverLetters[index];
-    navigate(`/cover-letter/${index}`, { state: { coverLetter } });
+    setGeneratedText(coverLetter.cover); // Set the clicked cover letter to the generatedText state
   };
 
   const renderLinks = () => {

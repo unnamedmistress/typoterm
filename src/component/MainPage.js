@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import backgroundImage from "../public/assets/IMG_2662.png"; // import the image
+import backgroundImage from "../assets/IMG_2662.PNG";
+
+const image = `url:"https://github.com/unnamedmistress/typoterm/blob/main/public/assets/IMG_2662.PNG?raw=true`
+
+// import the image
 const MainPage = () => {
   return (
     <>
      <div className="bg-gradient-to-r  from-teal-900 to-black">
-        <div className="object-none h-80 w-96" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: "cover" }}></div>
+        <div className="object-none h-80 w-96" style={{ backgroundImage: `url(${image})`, backgroundSize: "cover" }}></div>
         <div className="flex flex-col lg:flex-row items-center justify-evenly py-12 px-4 h-screen">
           <div className="lg:w-1/2 text-white mx-auto">
             <h1 className="text-4xl font-bold mb-4">Welcome to Typo Terminator</h1>
