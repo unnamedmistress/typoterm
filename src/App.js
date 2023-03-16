@@ -3,7 +3,7 @@ import LoginForm from "./component/LoginForm.js";
 import SignupForm from "./component/SignupForm.js";
 import AuthButtons from "./component/LogButton.js";
 import LogoutButton from "./component/LogoutButton.js";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Nav from "./component/Nav.js";
 import How from "./component/how.js";
 import Contact from "./component/contact.js";
@@ -38,7 +38,9 @@ const App = () => {
   const handleSignup = () => {
     setShowSignupForm(true);
   };
-
+  const handleSignupClick = () => {
+    setShowSignupForm(true);
+  };
   const [dots, setDots] = useState(0);
 
   useEffect(() => {
@@ -49,9 +51,22 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-   
-    </div>
+    <Router>
+      <Nav isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      <Routes>
+        {/* Other routes */}
+        <Route
+          path="/login"
+          element={
+            <LoginForm
+              setIsLoggedIn={setIsLoggedIn}
+              onSignupClick={handleSignupClick}
+            />
+          }
+        />
+        {/* Other routes */}
+      </Routes>
+    </Router>
   );
 };
 
