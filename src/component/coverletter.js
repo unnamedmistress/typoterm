@@ -4,7 +4,7 @@ import { generateText } from "../openai.js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import CoverLetterView from './CoverLetterView.js';
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "./LoadingSpinner.js";
 import ApiResponseList from "./ApiResponseList.js"; // Import the ApiResponseList component
 
 const prompt = "Write a cover letter ";
