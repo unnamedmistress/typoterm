@@ -4,7 +4,6 @@ import { generateText } from "../openai.js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import CoverLetterView from './CoverLetterView.js';
-import LoadingSpinner from "./LoadingSpinner.js";
 import ApiResponseList from "./ApiResponseList.js"; // Import the ApiResponseList component
 
 const prompt = "Write a cover letter ";
@@ -18,6 +17,11 @@ const Cover = (props) => {
   const { isLoggedIn, userId } = props;
   const navigate = useNavigate();
 
+  const LoadingSpinner = () => {
+    return (
+      <div className="w-16 h-16 border-t-4 border-teal-500 border-solid rounded-full animate-spin"></div>
+    );
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
