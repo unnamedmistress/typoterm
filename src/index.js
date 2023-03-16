@@ -13,6 +13,7 @@ import ResponseForm from "./component/ResponseForm.js";
 import LoginForm from "./component/LoginForm.js";
 import SignupForm from "./component/SignupForm.js";
 import Footer from './component/footer.js';
+import MainPage from './component/MainPage.js';
 
 
 
@@ -21,7 +22,7 @@ createRoot(document.getElementById('root')).render(
     <Router>
       <Nav />
       <Routes>
-        <Route path="/" element={<LoginForm onSignupClick={() => history.push('/signup')} />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/how" element={<How />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/contact" element={<Contact />} />
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/coverLetter" element={<Cover />} />
         <Route path="/useraccount" element={<UserAccount />} />
         <Route path="/response-form" element={<ResponseForm />} />
+        <Route path="/login" element={<LoginForm onSignupClick={() => history.push('/signup')} />} />
       </Routes>
       <Footer />
       <App />
