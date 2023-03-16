@@ -12,7 +12,7 @@ const MainPage = () => {
           <img
             src="https://github.com/unnamedmistress/typoterm/blob/main/public/assets/IMG_2662.PNG?raw=true"
             alt="Centered"
-            className="max-w-full max-h-full"
+            className="max-w-full max-h-full h-64"
           />
         </div>
         <div className="flex flex-col lg:flex-row items-center justify-evenly py-12 px-4 h-screen">
