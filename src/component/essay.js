@@ -6,7 +6,7 @@ const Essay = () => {
   const [inputText, setInputText] = useState("");
   const [generatedText, setGeneratedText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const promptEssay = "Edit this text, and provide 5 steps to improve Essay";
+  const promptEssay = "Write a short essay about text input";
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
@@ -22,6 +22,7 @@ const Essay = () => {
     <>
 <div className="bg-gradient-to-r from-teal-900 to-black pt-24 pb-96">
       <div className="flex">
+
         {/* <div className="w-1/4 bg-zinc-800 p-4">
           <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-4">Saved Links</h2>
           {renderLinks()}
@@ -34,6 +35,7 @@ const Essay = () => {
         <div className="flex-grow">
       <h1 className="text-5xl font-bold text-center text-white px-9">
         Essay Generator
+
       </h1>
       <p className="text-lg font-medium text-center text-gray-400 mt-2 mb-8">Create top-quality essays in minutes</p>
     </div>

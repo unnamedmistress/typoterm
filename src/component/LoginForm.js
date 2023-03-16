@@ -1,12 +1,23 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-function LoginForm(props) {
+function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    console.log('handleLogin function called');
+    setIsLoggedIn(true);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const url = "/api/login";
+
+    const baseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
+const url = `${baseUrl}/api/login`;
     console.log("Sending POST request to:", url);
     try {
       const response = await fetch(url, {
@@ -18,9 +29,13 @@ function LoginForm(props) {
         body: JSON.stringify({ username, password }),
       });
       console.log(response);
-      console.log("response.ok : " + response.ok);
+
       if (response.ok) {
-        props.onLogin();
+        const data = await response.json();
+        localStorage.setItem("token", data.token);
+        props.setIsLoggedIn(true);
+        handleLogin();
+        navigate("/");
       } else {
         console.log(username + " : " + password);
         throw new Error("HTTP error " + response.status);
@@ -106,6 +121,7 @@ function LoginForm(props) {
             <span className="text-white">Don't have an account yet? </span>
             <button
               type="button"
+
               className="font-medium text-teal-600 hover:text-white focus:outline-none focus:underline transition ease-in-out duration-150"
               onClick={props.onSignupClick}
             >
@@ -117,7 +133,6 @@ function LoginForm(props) {
     </div>
     </div>
   );
-}
+  }
 
-
-export default LoginForm
+export default LoginForm;

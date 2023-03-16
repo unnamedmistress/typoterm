@@ -17,10 +17,22 @@ const Cover = (props) => {
   const { isLoggedIn, userId } = props;
   const navigate = useNavigate();
 
+  const LoadingSpinner = () => {
+    return (
+      <div className="w-16 h-16 border-t-4 border-teal-500 border-solid rounded-full animate-spin"></div>
+    );
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/user/${userId}`);
+        const token = localStorage.getItem("token");
+        const response = await axios.get(`/api/user/${userId}/responses`, {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setUserData(response.data);
         setSavedCoverLetters(response.data.userResponses || []); // Set saved cover letters
       } catch (error) {
@@ -85,12 +97,15 @@ const Cover = (props) => {
       </div>
     ));
   };
+  
 
   return (
+
     <>
     <div className="bg-gradient-to-r from-teal-900 to-black pt-24 pb-40">
       <div className="flex">
         {/* <div className="w-1/4 bg-zinc-800 p-4">
+
           <h2 className="text-2xl text-teal-700 hover:text-teal-400 font-bold mb-4">Saved Links</h2>
           {renderLinks()}
           <ApiResponseList
@@ -133,7 +148,7 @@ const Cover = (props) => {
               onClick={handleSubmit}
               disabled={isLoading}
             >
-              {isLoading ? "Loading..." : "Generate Cover Letter"}
+              {isLoading ? <LoadingSpinner /> : "Generate Cover Letter"}
             </button>
             {generatedText && isLoggedIn && (
               <button
@@ -153,6 +168,10 @@ const Cover = (props) => {
               </button>
             )}
           </div>
+        </div>
+  
+        {/* Right sidebar */}
+        <div className="w-1/6 p-4">
           {generatedText && (
             <div className="mt-8 bg-gray-100 border border-gray-400 rounded py-4 px-6 ">
               <h3 className="text-white text-xl font-bold mb-2 mt-4">Generated Cover Letter:</h3>

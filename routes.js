@@ -3,54 +3,30 @@ import mongoose from 'mongoose';
 import User from './data/User.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import authMiddleware from './src/utils/auth.js';
-
-const getAllUsers = async (req, res) => {
-  try {
-    const users = await User.find({});
-    res.status(200).json({ success: true, users });
-  } catch (error) {
-    console.error('Error while fetching all users:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
-
-const getUserById = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const user = await User.findById(id);
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    res.status(200).json({ success: true, user });
-  } catch (error) {
-    console.error('Error while fetching user by ID:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
+import {authMiddleware} from './routes/utils/auth.js';
 
 const setupRoutes = (apiRouter) => {
-    apiRouter.route('/api/user').get(getAllUsers);
-    apiRouter.route('/api/user/:id').get(getUserById);
 
-    apiRouter.post('/api/login', async (req, res) => {
-        const { username, password } = req.body;
-        const user = await User.findOne({ username });
-        console.log('user', user);
-        console.log('username', username);
-        console.log('password', password);
-      
-        if (!user) {
-          return res.status(401).json({ error: 'Invalid username or password' });
-        }
-      
-        if (password.trim() !== user.password.trim()) {
-          return res.status(401).json({ error: 'Invalid username or password' });
-        }
-      
-        res.status(200).json({ message: 'Login successful' });
-      });
-      
+  apiRouter.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    console.log('user', user);
+    console.log('username', username);
+    console.log('password', password);
+  
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+  
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    if (!isPasswordCorrect) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+  
+    const token = signToken(user);
+    res.json({ token, message: 'Login successful' });
+  });
+    
       // POST /api/signup
       apiRouter.post('/api/signup', async (req, res) => {
         const { username, password } = req.body;
