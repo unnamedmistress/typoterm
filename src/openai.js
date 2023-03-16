@@ -27,14 +27,14 @@ const moderateText = async (text) => {
   console.log('moderation: ' + response.data.results[0].flagged);
   return response.data.results[0].flagged;
 };
-const generateText = async (promptEssay, text) => {
+const generateText = async (promptEssay, text, combinedText) => {
   console.log('generateText:', text);
   try {
     const isFlagged = await moderateText(text);
     if (!isFlagged) {
       const completion = await openai.post("/chat/completions", {
         model: "gpt-3.5-turbo-0301",
-        messages: [{ role: "user", content: promptEssay || promptOutline + " " + text }],
+        messages: [{ role: "user", content: promptEssay || promptOutline + " " + text || combinedText }],
         n: 1,
         stop: null,
         max_tokens: 1000,
