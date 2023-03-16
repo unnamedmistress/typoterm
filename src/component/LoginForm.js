@@ -47,11 +47,13 @@ const url = `${baseUrl}/api/login`;
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+
+    <div className="bg-gradient-to-r  from-teal-900 to-black">
+    <div className="flex flex-col items-center justify-center min-h-screen ">
       <div className="max-w-md w-full">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900">Login</h1>
-          <p className="mt-2 text-sm text-gray-600">
+          <h1 className="text-3xl font-bold text-white">Login</h1>
+          <p className="mt-2 text-sm text-white">
             Enter your username and password
           </p>
         </div>
@@ -100,7 +102,7 @@ const url = `${baseUrl}/api/login`;
                 type="checkbox"
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
               />
-              <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
+              <label htmlFor="remember_me" className="ml-2 block text-sm text-white">
                 Remember me
               </label>
             </div>
@@ -108,7 +110,7 @@ const url = `${baseUrl}/api/login`;
             <div className="text-sm">
               <button
                 type="submit"
-                className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-teal-600 text-base font-medium text-white hover:bg-white hover:text-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
               >
                 Log in
               </button>
@@ -116,17 +118,19 @@ const url = `${baseUrl}/api/login`;
           </div>
   
           <div className="text-sm mt-4 text-center">
-            <span className="text-gray-600">Don't have an account yet? </span>
+            <span className="text-white">Don't have an account yet? </span>
             <button
               type="button"
-              className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-              onClick={() => navigate('/')}
+
+              className="font-medium text-teal-600 hover:text-white focus:outline-none focus:underline transition ease-in-out duration-150"
+              onClick={props.onSignupClick}
             >
               Sign up
             </button>
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
   }
