@@ -17,16 +17,6 @@ const openai = axios.create({
   },
 });
 
-const moderateText = async (text, combinedText) => {
-  const response = await openai.post("/moderations", { text, combinedText });
-  console.log(response.data);
-  console.log(response.data.results[0].flagged);
-  if (response.data.rejected) {
-    window.alert("The message has been rejected.");
-  }
-  console.log('moderation: ' + response.data.results[0].flagged);
-  return response.data.results[0].flagged;
-};
 const generateText = async (promptEssay, text, combinedText) => {
   console.log('generateText:', text);
   try {
