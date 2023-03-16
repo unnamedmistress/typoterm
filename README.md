@@ -10,6 +10,8 @@ DOUBLE LAYER OF PROTECTION for child users. User enter text is sent though a mod
 
 ![Alt text](./public/terminator.png)
 ![Alt text](./public/TypoTerminator.gif)
+![Alt text](./public/essaygif.gif)
+
 
 
 

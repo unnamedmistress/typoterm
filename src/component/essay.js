@@ -34,7 +34,7 @@ const Essay = () => {
         </div> */}
         <div className="flex-grow">
       <h1 className="text-5xl font-bold text-center text-white px-9">
-        Essay Generator
+        Essay Copy Edit Master
 
       </h1>
       <p className="text-lg font-medium text-center text-gray-400 mt-2 mb-8">Get a perfectly edited final version of your essay</p>
